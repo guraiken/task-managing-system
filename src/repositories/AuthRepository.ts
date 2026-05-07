@@ -15,4 +15,8 @@ export class AuthRepository{
             }
         })
     }
+
+    async existeUsuario(){
+        
+    }
 }
