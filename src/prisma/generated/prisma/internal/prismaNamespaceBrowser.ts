@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Usuario: 'Usuario'
+  Usuario: 'Usuario',
+  Projeto: 'Projeto',
+  Tarefa: 'Tarefa'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,10 +74,40 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UsuarioScalarFieldEnum = {
   id: 'id',
-  nome: 'nome'
+  nome: 'nome',
+  nivel_acesso: 'nivel_acesso'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const ProjetoScalarFieldEnum = {
+  id: 'id',
+  dono_id: 'dono_id',
+  titulo_prjt: 'titulo_prjt',
+  area: 'area',
+  descr: 'descr'
+} as const
+
+export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
+
+
+export const TarefaScalarFieldEnum = {
+  id: 'id',
+  projeto_id: 'projeto_id',
+  titulo_trf: 'titulo_trf',
+  descr: 'descr',
+  dono_id: 'dono_id',
+  resp_id: 'resp_id',
+  nivel_acesso: 'nivel_acesso',
+  data_i: 'data_i',
+  data_v: 'data_v',
+  data_f: 'data_f',
+  prioridade: 'prioridade',
+  status: 'status'
+} as const
+
+export type TarefaScalarFieldEnum = (typeof TarefaScalarFieldEnum)[keyof typeof TarefaScalarFieldEnum]
 
 
 export const SortOrder = {
