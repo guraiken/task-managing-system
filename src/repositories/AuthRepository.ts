@@ -1,5 +1,6 @@
-import type { PrismaClient } from "@prisma/client/extension";
+import type { PrismaClient, Token } from "../prisma/generated/client";
 import type { Usuario } from "../prisma/generated/client";
+import { prisma } from "../prisma/prisma";
 
 
 export class AuthRepository{
@@ -8,15 +9,26 @@ export class AuthRepository{
     }
 
     async cadastrar(dadosUsuario: Partial<Usuario>) {
-        return this.prisma.usuario.create({
+        return await this.prisma.usuario.create({
             data: {
-                nome: dadosUsuario.nome,
-                senha: dadosUsuario.senha
+                email: dadosUsuario.email || "",
+                nome: dadosUsuario.nome || "",
+                senha: dadosUsuario.senha || ""
             }
         })
     }
 
-    async existeUsuario(){
-        
+    async existeUsuario(email: string){
+        return await this.prisma.usuario.findUnique({
+            where: {email: email}
+        })
+    }
+
+    async criarToken(dadosToken: Omit<Token, "id" | "revoked">){
+        return await this.prisma.token.create({
+            data: dadosToken
+        })
     }
 }
+
+export const authRepository = new AuthRepository(prisma)
