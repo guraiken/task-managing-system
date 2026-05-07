@@ -16,3 +16,12 @@ model Usuario {
   id   Int    @id @default(autoincrement())
   nome String
 }
+
+model Tarefa {
+  id        Int      @id @default(autoincrement())
+  titulo    String
+  descricao String?
+  concluida Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
