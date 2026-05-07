@@ -9,7 +9,10 @@ export class AuthRepository{
 
     async cadastrar(dadosUsuario: Partial<Usuario>) {
         return this.prisma.usuario.create({
-            
+            data: {
+                nome: dadosUsuario.nome,
+                senha: dadosUsuario.senha
+            }
         })
     }
 }
