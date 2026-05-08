@@ -1,4 +1,4 @@
-import type { Request, Response } from "express";
+import type { Errback, ErrorRequestHandler, Request, Response } from "express";
 import type { Usuario } from "../prisma/generated/client";
 import { authService, type AuthService } from "../services/AuthService";
 
@@ -9,13 +9,18 @@ export class AuthController{
         try {
             const dadosUsuario = req.body
             const usuarioCriado = await this.service.cadastrar(dadosUsuario)
+
+           
             return res.status(201).json({
-                data: dadosUsuario,
+                data: usuarioCriado,
                 message: "Usuário criado com sucesso!"
             })
-        } catch (error) {
-            console.log(error)
-            res.status(404).json(error)
+        } catch (error: any)
+         {
+            res.status(404).json({
+                error: error.message,
+                message: "Dados inválidos"
+            })
         }
     }
 
@@ -26,12 +31,16 @@ export class AuthController{
 
             return res.status(200).json({
                 message: "Usuário autenticado com sucesso!",
-                accessToken: dadosLogin.tokenAcesso,
-                refreshToken: dadosLogin.tokenRefresh
+                data: {
+                    accessToken: dadosLogin.tokenAcesso,
+                    refreshToken: dadosLogin.tokenRefresh
+                }
             })
-        } catch (error) {
-            console.log(error)
-            res.status(404).json(error)
+        } catch (error: any) {
+            res.status(404).json({
+                error: error.message,
+                message: "Erro no login"
+            })
         }
     }
 }

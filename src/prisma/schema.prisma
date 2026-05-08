@@ -17,10 +17,16 @@ model Usuario {
   email String @unique
   nome  String
   senha String
+  role  Role   @default(USER)
 
   tokens Token[]
 
   @@map("usuario")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 enum TypeToken {

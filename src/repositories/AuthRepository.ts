@@ -13,7 +13,8 @@ export class AuthRepository{
             data: {
                 email: dadosUsuario.email || "",
                 nome: dadosUsuario.nome || "",
-                senha: dadosUsuario.senha || ""
+                senha: dadosUsuario.senha || "",
+                role: dadosUsuario.role || "USER"
             }
         })
     }

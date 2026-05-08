@@ -1,30 +1,47 @@
+import { createHash } from "../utils/createHash";
+import bcrypt from "bcrypt";
 import type { Usuario } from "../prisma/generated/client";
-import { authRepository, type AuthRepository } from "../repositories/authRepository";
+import { authRepository, type AuthRepository } from "../repositories/AuthRepository";
 import { signTokenAcesso, signTokenRefresh } from "../utils/jwt";
 
 export class AuthService {
     constructor(private readonly repository: AuthRepository){}
 
     async cadastrar(dadosUsuario: Usuario){
-        return await this.repository.cadastrar({
+        const hash = await createHash(dadosUsuario.senha)
+
+        switch (true){
+            case (!dadosUsuario.nome || !dadosUsuario.email):
+                throw new Error("Usuario necessita de um nome e email")
+                break
+            case (!dadosUsuario.email.includes("@")):
+                throw new Error("Email inválido")
+                break
+        }
+
+        const usuarioCriado = this.repository.cadastrar({
             email: dadosUsuario.email,
             nome: dadosUsuario.nome,
-            senha: dadosUsuario.senha 
+            senha: hash,
+            role: dadosUsuario.role || null
         })
+        return usuarioCriado
     }
 
     async logar(dadosUsuario: Usuario){
         const existeUsuario = await this.repository.existeUsuario(dadosUsuario.email)
-        const credenciaisValidas = dadosUsuario.senha === existeUsuario?.senha
+        const credenciaisValidas = await bcrypt.compare(dadosUsuario.senha || "", existeUsuario?.senha || "")
 
         if(existeUsuario && credenciaisValidas){
             const tokenAcesso = signTokenAcesso({
                 email: existeUsuario.email,
-                senha: existeUsuario.senha
+                senha: existeUsuario.senha,
+                role: existeUsuario.role
             })
             const tokenRefresh = signTokenRefresh({
                 email: existeUsuario.email,
-                senha: existeUsuario.senha
+                senha: existeUsuario.senha,
+                role: existeUsuario.role
             }) 
 
             //refresh create
