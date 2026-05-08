@@ -1,25 +1,27 @@
 import type { PrismaClient } from "../prisma/generated/prisma/client";
 import { prisma } from "../prisma/prisma";
 
-
 export class GerenTrfRepository {
-    constructor(private readonly prisma: PrismaClient) {
-        this.prisma = prisma;
-    }
+    constructor(private readonly prisma: PrismaClient) {}
 
-    async lstTrfProjeto() {
-        return await this.prisma.tarefa.findMany({
-            include: {
-                projeto: {
+    async lstProjetoComTarefas() {
+        return await this.prisma.projeto.findMany({
+            select: {
+                id: true,
+                titulo_prjt: true,
+                area: true,
+
+                tarefa: {
                     select: {
                         id: true,
-                        titulo_prjt: true,
-                        area: true
+                        titulo_trf: true,
+                        descr: true,
+                        status: true
                     }
                 }
             }
-        })
+        });
     }
 }
 
-export const gerenTrfRepository = new GerenTrfRepository(prisma)
+export const gerenTrfRepository = new GerenTrfRepository(prisma);
