@@ -18,8 +18,8 @@ export class AuthController{
         } catch (error: any)
          {
             res.status(404).json({
-                error: error.message,
-                message: "Dados inválidos"
+                error,
+                message: error?.message
             })
         }
     }
@@ -38,8 +38,8 @@ export class AuthController{
             })
         } catch (error: any) {
             res.status(404).json({
-                error: error.message,
-                message: "Erro no login"
+                error,
+                message: error?.message
             })
         }
     }
