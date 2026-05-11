@@ -19,25 +19,30 @@ export class ProjetoRepository {
         })
     }
 
-    async criar(dadosProjeto:Omit<Projeto, "id">,dadosUsuario:Usuario) {
+    async criar(dadosProjeto:Omit<Projeto, "id">) {
 
         const criando = await this.prisma.projeto.create({
             data:{
                 ...dadosProjeto
             }
         })
+        
+        return criando
+
+    }
+
+    async criarRelacao(idProjeto:number,idUsuario:number) {
 
         const criandoRelacao= await this.prisma.usuarioEmProjeto.create({
             data:{
-                projetoId:criando.id,
-                usuarioId:dadosUsuario.id
+                projetoId:idProjeto,
+                usuarioId:idUsuario
 
            }
         })
 
-        return this.buscarId(criandoRelacao.projetoId)
+        return criandoRelacao
         
-
     }
 
     async deletar(id:number) {
