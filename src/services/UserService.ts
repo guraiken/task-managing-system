@@ -6,15 +6,20 @@ export class UserService{
 
     async listar(){
         const dadosUsuarios = await this.repository.listar()
+
+        if(dadosUsuarios.length === 0) {
+            throw new Error("Não foi encontrado nenhum usuário")
+        }
+        return dadosUsuarios
     }
 
     async buscarPorId(id: number){
-        const usuarioExiste = await this.buscarPorId(id)
+        const usuarioExiste = await this.repository.buscarPorId(id)
 
         if(!usuarioExiste){
             throw new Error("Usuário não encontrado")
         }
-        return 
+        return usuarioExiste
     }
 
     async editar(dadosUsuario: Usuario){
