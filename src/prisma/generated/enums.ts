@@ -9,7 +9,31 @@
 * 🟢 You can import this file directly.
 */
 
+export const NivelAcesso = {
+  A: 'A',
+  B: 'B',
+  C: 'C',
+  D: 'D',
+  E: 'E'
+} as const
+
+export type NivelAcesso = (typeof NivelAcesso)[keyof typeof NivelAcesso]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const Prioridade = {
+  Baixa: 'Baixa',
+  Media: 'Media',
+  Alta: 'Alta'
+} as const
+
+export type Prioridade = (typeof Prioridade)[keyof typeof Prioridade]
+
+
+export const Status = {
+  Pausada: 'Pausada',
+  Andamento: 'Andamento',
+  Concluida: 'Concluida',
+  Reaberta: 'Reaberta'
+} as const
+
+export type Status = (typeof Status)[keyof typeof Status]

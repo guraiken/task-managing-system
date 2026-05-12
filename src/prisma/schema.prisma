@@ -5,7 +5,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../prisma/generated/prisma"
+  output   = "../prisma/generated"
 }
 
 datasource db {
@@ -20,6 +20,7 @@ model Usuario {
 
   tarefas_dono Tarefa[]  @relation("DonoTarefa")
   tarefas_resp Tarefa[]  @relation("ResponsavelTarefa")
+  tarefas      UsuarioEmTarefa[]
   projetos     Projeto[]
 }
 
@@ -62,6 +63,17 @@ model Tarefa {
   data_f       DateTime
   prioridade   Prioridade
   status       Status
+  usuarios     UsuarioEmTarefa[]
+}
+
+model UsuarioEmTarefa {
+  tarefaId  Int
+  usuarioId Int
+
+  tarefa  Tarefa  @relation(fields: [tarefaId], references: [id])
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@id([tarefaId, usuarioId])
 }
 
 enum Prioridade {
@@ -75,4 +87,4 @@ enum Status {
   Andamento
   Concluida
   Reaberta
-}
+} 
