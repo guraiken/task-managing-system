@@ -46,8 +46,3 @@ export { Prisma }
  * 
  */
 export type Usuario = Prisma.UsuarioModel
-/**
- * Model Token
- * 
- */
-export type Token = Prisma.TokenModel

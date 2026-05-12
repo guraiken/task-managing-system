@@ -22,8 +22,3 @@ export * from './enums';
  * 
  */
 export type Usuario = Prisma.UsuarioModel
-/**
- * Model Token
- * 
- */
-export type Token = Prisma.TokenModel
