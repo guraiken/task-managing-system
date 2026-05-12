@@ -13,6 +13,36 @@ datasource db {
 }
 
 model Usuario {
-  id   Int    @id @default(autoincrement())
-  nome String
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  nome  String
+  senha String
+  role  Role   @default(USER)
+
+  tokens Token[]
+
+  @@map("usuario")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum TypeToken {
+  ACCESS
+  REFRESH
+}
+
+model Token {
+  id        Int       @id @default(autoincrement())
+  token     String    @db.VarChar(255)
+  type      TypeToken @default(ACCESS)
+  revoked   Boolean   @default(false)
+  expiresAt DateTime
+  usuarioId Int
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@map("token")
 }
