@@ -22,8 +22,8 @@ export class UserService{
         return usuarioExiste
     }
 
-    async editar(dadosUsuario: Usuario){
-        const usuarioExiste = await this.repository.buscarPorId(dadosUsuario.id)
+    async editar(dadosUsuario: Usuario, id: number){
+        const usuarioExiste = await this.repository.buscarPorId(id)
 
         if(!dadosUsuario.email || !dadosUsuario.nome || !dadosUsuario.senha){
             throw new Error("usuário/nome ou senha estão vazios")
