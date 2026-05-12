@@ -1,5 +1,5 @@
 import type { Projeto, Usuario } from "../prisma/generated/client";
-import type { ProjetoRepository } from "../repositories/projetoRepository";
+import { projetoRepository, ProjetoRepository } from "../repositories/projetoRepository";
 
 export class ProjetoServices {
     constructor(private readonly repository: ProjetoRepository) {
@@ -130,11 +130,6 @@ export class ProjetoServices {
 
     }
 
-
-
-
-
-
-
-
 }
+
+export const projetoServices = new ProjetoServices(projetoRepository)
