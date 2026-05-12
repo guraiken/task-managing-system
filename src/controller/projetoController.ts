@@ -1,11 +1,11 @@
 import type { Projeto } from "../prisma/generated/client";
-import type { ProjetoServices } from "../services/projetoServices";
+import { projetoServices, type ProjetoServices } from "../services/projetoServices";
 import type { Response, Request } from "express"
 
 
 
 
-export class projetoController {
+export class ProjetoController {
 
     constructor(private readonly service: ProjetoServices) {
         this.service
@@ -123,10 +123,9 @@ export class projetoController {
 
 
 
-
-
-
 }
+
+export const projetoController = new ProjetoController(projetoServices)
 
 
 
