@@ -386,7 +386,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Usuario: 'Usuario',
   UsuarioEmProjeto: 'UsuarioEmProjeto',
-  Projeto: 'Projeto'
+  Projeto: 'Projeto',
   Token: 'Token'
 } as const
 
@@ -403,8 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "usuarioEmProjeto" | "projeto"
-    modelProps: "usuario" | "token"
+    modelProps: "usuario" | "usuarioEmProjeto" | "projeto" | "token"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -627,6 +626,9 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ProjetoCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ProjetoCountAggregateOutputType> | number
+        }
+      }
+    }
     Token: {
       payload: Prisma.$TokenPayload<ExtArgs>
       fields: Prisma.TokenFieldRefs
@@ -766,6 +768,8 @@ export const ProjetoScalarFieldEnum = {
 } as const
 
 export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
+
+
 export const TokenScalarFieldEnum = {
   id: 'id',
   token: 'token',

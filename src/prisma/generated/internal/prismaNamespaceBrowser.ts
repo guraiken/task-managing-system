@@ -53,7 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Usuario: 'Usuario',
   UsuarioEmProjeto: 'UsuarioEmProjeto',
-  Projeto: 'Projeto'
+  Projeto: 'Projeto',
   Token: 'Token'
 } as const
 
@@ -99,6 +99,8 @@ export const ProjetoScalarFieldEnum = {
 } as const
 
 export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
+
+
 export const TokenScalarFieldEnum = {
   id: 'id',
   token: 'token',

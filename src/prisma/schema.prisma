@@ -20,7 +20,10 @@ model Usuario {
   role  Role   @default(USER)
 
   tokens Token[]
+
   usuarioEmProjetos UsuarioEmProjeto[]
+
+  @@map("usuario")
 }
 
 model UsuarioEmProjeto {
@@ -40,15 +43,6 @@ model Projeto {
   membros UsuarioEmProjeto[]
 
   @@map("projeto")
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  nome  String
-  senha String
-  role  Role   @default(USER)
-
-  tokens Token[]
-
-  @@map("usuario")
 }
 
 enum Role {

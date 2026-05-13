@@ -1,12 +1,4 @@
 -- CreateTable
-CREATE TABLE "Usuario" (
-    "id" SERIAL NOT NULL,
-    "nome" TEXT NOT NULL,
-
-    CONSTRAINT "Usuario_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "UsuarioEmProjeto" (
     "projetoId" INTEGER NOT NULL,
     "usuarioId" INTEGER NOT NULL,
@@ -27,4 +19,4 @@ CREATE TABLE "projeto" (
 ALTER TABLE "UsuarioEmProjeto" ADD CONSTRAINT "UsuarioEmProjeto_projetoId_fkey" FOREIGN KEY ("projetoId") REFERENCES "projeto"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UsuarioEmProjeto" ADD CONSTRAINT "UsuarioEmProjeto_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "Usuario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "UsuarioEmProjeto" ADD CONSTRAINT "UsuarioEmProjeto_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "usuario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
