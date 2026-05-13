@@ -56,3 +56,7 @@ export type UsuarioEmProjeto = Prisma.UsuarioEmProjetoModel
  * 
  */
 export type Projeto = Prisma.ProjetoModel
+ * Model Token
+ * 
+ */
+export type Token = Prisma.TokenModel
