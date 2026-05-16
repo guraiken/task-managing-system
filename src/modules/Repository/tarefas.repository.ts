@@ -36,20 +36,6 @@ export function buscarUsuario(idsUsuario: number[]) {
   })
 }
 
-export function listarTarefas() {
-  return prisma.tarefa.findMany({
-    include: {
-      projeto: true,
-      dono: true,
-      responsavel: true,
-      usuarios: {
-        include: {
-          usuario: true,
-        },
-      },
-    },
-  })
-}
 
 export function criarTarefa(dados: CriarTarefaDados) {
   return prisma.tarefa.create({

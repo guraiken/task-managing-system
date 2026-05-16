@@ -2,7 +2,7 @@ import {
   buscarProjeto,
   buscarUsuario,
   criarTarefa,
-  listarTarefas,
+  
 } from "../Repository/tarefas.repository"
 
 type Prioridade = "Baixa" | "Media" | "Alta"
@@ -16,10 +16,6 @@ type CriarTarefaDados = {
   donoId?: number
   responsavelId?: number
   usuarioIds?: number[]
-}
-
-export function listarTarefasService() {
-  return listarTarefas()
 }
 
 
