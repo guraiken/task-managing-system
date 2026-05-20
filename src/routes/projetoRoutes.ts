@@ -5,31 +5,31 @@ export const projetoRoutes = Router()
 
 
 
-projetoRoutes.get("http://localhost:3000/",async (req,res)=>{
+projetoRoutes.get("/",async (req,res)=>{
 
     return projetoController.buscar(req,res)
 
 })
 
-projetoRoutes.get("http://localhost:3000/:id",async (req,res)=>{
+projetoRoutes.get("/:id",async (req,res)=>{
 
     return projetoController.buscarPorId(req,res)
 
 })
 
-projetoRoutes.post("http://localhost:3000/",async (req,res)=>{
+projetoRoutes.post("/",async (req,res)=>{
 
     return projetoController.criar(req,res)
 
 })
 
-projetoRoutes.delete("http://localhost:3000/:id",async (req,res)=>{
+projetoRoutes.delete("/:id",async (req,res)=>{
 
     return projetoController.deletar(req,res)
 
 })
 
-projetoRoutes.put("http://localhost:3000/:id",async (req,res)=>{
+projetoRoutes.put("/:id",async (req,res)=>{
 
     return projetoController.buscar(req,res)
 
