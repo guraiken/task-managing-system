@@ -61,3 +61,8 @@ export type Tarefa = Prisma.TarefaModel
  * 
  */
 export type UsuarioEmTarefa = Prisma.UsuarioEmTarefaModel
+/**
+ * Model Token
+ * 
+ */
+export type Token = Prisma.TokenModel

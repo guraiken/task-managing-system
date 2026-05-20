@@ -204,6 +204,7 @@ export type UsuarioWhereInput = {
   tarefas_resp?: Prisma.TarefaListRelationFilter
   tarefas?: Prisma.UsuarioEmTarefaListRelationFilter
   projetos?: Prisma.ProjetoListRelationFilter
+  tokens?: Prisma.TokenListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -214,6 +215,7 @@ export type UsuarioOrderByWithRelationInput = {
   tarefas_resp?: Prisma.TarefaOrderByRelationAggregateInput
   tarefas?: Prisma.UsuarioEmTarefaOrderByRelationAggregateInput
   projetos?: Prisma.ProjetoOrderByRelationAggregateInput
+  tokens?: Prisma.TokenOrderByRelationAggregateInput
 }
 
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -227,6 +229,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   tarefas_resp?: Prisma.TarefaListRelationFilter
   tarefas?: Prisma.UsuarioEmTarefaListRelationFilter
   projetos?: Prisma.ProjetoListRelationFilter
+  tokens?: Prisma.TokenListRelationFilter
 }, "id">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -256,6 +259,7 @@ export type UsuarioCreateInput = {
   tarefas_resp?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -266,6 +270,7 @@ export type UsuarioUncheckedCreateInput = {
   tarefas_resp?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoUncheckedCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -275,6 +280,7 @@ export type UsuarioUpdateInput = {
   tarefas_resp?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -285,6 +291,7 @@ export type UsuarioUncheckedUpdateInput = {
   tarefas_resp?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUncheckedUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -407,12 +414,27 @@ export type UsuarioUpdateOneRequiredWithoutTarefasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutTarefasInput, Prisma.UsuarioUpdateWithoutTarefasInput>, Prisma.UsuarioUncheckedUpdateWithoutTarefasInput>
 }
 
+export type UsuarioCreateNestedOneWithoutTokensInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutTokensInput, Prisma.UsuarioUncheckedCreateWithoutTokensInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutTokensInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneRequiredWithoutTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutTokensInput, Prisma.UsuarioUncheckedCreateWithoutTokensInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutTokensInput
+  upsert?: Prisma.UsuarioUpsertWithoutTokensInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutTokensInput, Prisma.UsuarioUpdateWithoutTokensInput>, Prisma.UsuarioUncheckedUpdateWithoutTokensInput>
+}
+
 export type UsuarioCreateWithoutProjetosInput = {
   nome: string
   nivel_acesso: $Enums.NivelAcesso
   tarefas_dono?: Prisma.TarefaCreateNestedManyWithoutDonoInput
   tarefas_resp?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutUsuarioInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutProjetosInput = {
@@ -422,6 +444,7 @@ export type UsuarioUncheckedCreateWithoutProjetosInput = {
   tarefas_dono?: Prisma.TarefaUncheckedCreateNestedManyWithoutDonoInput
   tarefas_resp?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedCreateNestedManyWithoutUsuarioInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutProjetosInput = {
@@ -446,6 +469,7 @@ export type UsuarioUpdateWithoutProjetosInput = {
   tarefas_dono?: Prisma.TarefaUpdateManyWithoutDonoNestedInput
   tarefas_resp?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUpdateManyWithoutUsuarioNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutProjetosInput = {
@@ -455,6 +479,7 @@ export type UsuarioUncheckedUpdateWithoutProjetosInput = {
   tarefas_dono?: Prisma.TarefaUncheckedUpdateManyWithoutDonoNestedInput
   tarefas_resp?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedUpdateManyWithoutUsuarioNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutTarefas_donoInput = {
@@ -463,6 +488,7 @@ export type UsuarioCreateWithoutTarefas_donoInput = {
   tarefas_resp?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTarefas_donoInput = {
@@ -472,6 +498,7 @@ export type UsuarioUncheckedCreateWithoutTarefas_donoInput = {
   tarefas_resp?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoUncheckedCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTarefas_donoInput = {
@@ -485,6 +512,7 @@ export type UsuarioCreateWithoutTarefas_respInput = {
   tarefas_dono?: Prisma.TarefaCreateNestedManyWithoutDonoInput
   tarefas?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTarefas_respInput = {
@@ -494,6 +522,7 @@ export type UsuarioUncheckedCreateWithoutTarefas_respInput = {
   tarefas_dono?: Prisma.TarefaUncheckedCreateNestedManyWithoutDonoInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedCreateNestedManyWithoutUsuarioInput
   projetos?: Prisma.ProjetoUncheckedCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTarefas_respInput = {
@@ -518,6 +547,7 @@ export type UsuarioUpdateWithoutTarefas_donoInput = {
   tarefas_resp?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTarefas_donoInput = {
@@ -527,6 +557,7 @@ export type UsuarioUncheckedUpdateWithoutTarefas_donoInput = {
   tarefas_resp?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUncheckedUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUpsertWithoutTarefas_respInput = {
@@ -546,6 +577,7 @@ export type UsuarioUpdateWithoutTarefas_respInput = {
   tarefas_dono?: Prisma.TarefaUpdateManyWithoutDonoNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTarefas_respInput = {
@@ -555,6 +587,7 @@ export type UsuarioUncheckedUpdateWithoutTarefas_respInput = {
   tarefas_dono?: Prisma.TarefaUncheckedUpdateManyWithoutDonoNestedInput
   tarefas?: Prisma.UsuarioEmTarefaUncheckedUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUncheckedUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutTarefasInput = {
@@ -563,6 +596,7 @@ export type UsuarioCreateWithoutTarefasInput = {
   tarefas_dono?: Prisma.TarefaCreateNestedManyWithoutDonoInput
   tarefas_resp?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput
   projetos?: Prisma.ProjetoCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTarefasInput = {
@@ -572,6 +606,7 @@ export type UsuarioUncheckedCreateWithoutTarefasInput = {
   tarefas_dono?: Prisma.TarefaUncheckedCreateNestedManyWithoutDonoInput
   tarefas_resp?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput
   projetos?: Prisma.ProjetoUncheckedCreateNestedManyWithoutDonoInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTarefasInput = {
@@ -596,6 +631,7 @@ export type UsuarioUpdateWithoutTarefasInput = {
   tarefas_dono?: Prisma.TarefaUpdateManyWithoutDonoNestedInput
   tarefas_resp?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput
   projetos?: Prisma.ProjetoUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTarefasInput = {
@@ -604,6 +640,61 @@ export type UsuarioUncheckedUpdateWithoutTarefasInput = {
   nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   tarefas_dono?: Prisma.TarefaUncheckedUpdateManyWithoutDonoNestedInput
   tarefas_resp?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput
+  projetos?: Prisma.ProjetoUncheckedUpdateManyWithoutDonoNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutTokensInput = {
+  nome: string
+  nivel_acesso: $Enums.NivelAcesso
+  tarefas_dono?: Prisma.TarefaCreateNestedManyWithoutDonoInput
+  tarefas_resp?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput
+  tarefas?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutUsuarioInput
+  projetos?: Prisma.ProjetoCreateNestedManyWithoutDonoInput
+}
+
+export type UsuarioUncheckedCreateWithoutTokensInput = {
+  id?: number
+  nome: string
+  nivel_acesso: $Enums.NivelAcesso
+  tarefas_dono?: Prisma.TarefaUncheckedCreateNestedManyWithoutDonoInput
+  tarefas_resp?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput
+  tarefas?: Prisma.UsuarioEmTarefaUncheckedCreateNestedManyWithoutUsuarioInput
+  projetos?: Prisma.ProjetoUncheckedCreateNestedManyWithoutDonoInput
+}
+
+export type UsuarioCreateOrConnectWithoutTokensInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutTokensInput, Prisma.UsuarioUncheckedCreateWithoutTokensInput>
+}
+
+export type UsuarioUpsertWithoutTokensInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutTokensInput, Prisma.UsuarioUncheckedUpdateWithoutTokensInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutTokensInput, Prisma.UsuarioUncheckedCreateWithoutTokensInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutTokensInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutTokensInput, Prisma.UsuarioUncheckedUpdateWithoutTokensInput>
+}
+
+export type UsuarioUpdateWithoutTokensInput = {
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
+  tarefas_dono?: Prisma.TarefaUpdateManyWithoutDonoNestedInput
+  tarefas_resp?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput
+  tarefas?: Prisma.UsuarioEmTarefaUpdateManyWithoutUsuarioNestedInput
+  projetos?: Prisma.ProjetoUpdateManyWithoutDonoNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutTokensInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
+  tarefas_dono?: Prisma.TarefaUncheckedUpdateManyWithoutDonoNestedInput
+  tarefas_resp?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput
+  tarefas?: Prisma.UsuarioEmTarefaUncheckedUpdateManyWithoutUsuarioNestedInput
   projetos?: Prisma.ProjetoUncheckedUpdateManyWithoutDonoNestedInput
 }
 
@@ -617,6 +708,7 @@ export type UsuarioCountOutputType = {
   tarefas_resp: number
   tarefas: number
   projetos: number
+  tokens: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -624,6 +716,7 @@ export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   tarefas_resp?: boolean | UsuarioCountOutputTypeCountTarefas_respArgs
   tarefas?: boolean | UsuarioCountOutputTypeCountTarefasArgs
   projetos?: boolean | UsuarioCountOutputTypeCountProjetosArgs
+  tokens?: boolean | UsuarioCountOutputTypeCountTokensArgs
 }
 
 /**
@@ -664,6 +757,13 @@ export type UsuarioCountOutputTypeCountProjetosArgs<ExtArgs extends runtime.Type
   where?: Prisma.ProjetoWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TokenWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -673,6 +773,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   tarefas_resp?: boolean | Prisma.Usuario$tarefas_respArgs<ExtArgs>
   tarefas?: boolean | Prisma.Usuario$tarefasArgs<ExtArgs>
   projetos?: boolean | Prisma.Usuario$projetosArgs<ExtArgs>
+  tokens?: boolean | Prisma.Usuario$tokensArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -700,6 +801,7 @@ export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   tarefas_resp?: boolean | Prisma.Usuario$tarefas_respArgs<ExtArgs>
   tarefas?: boolean | Prisma.Usuario$tarefasArgs<ExtArgs>
   projetos?: boolean | Prisma.Usuario$projetosArgs<ExtArgs>
+  tokens?: boolean | Prisma.Usuario$tokensArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -712,6 +814,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     tarefas_resp: Prisma.$TarefaPayload<ExtArgs>[]
     tarefas: Prisma.$UsuarioEmTarefaPayload<ExtArgs>[]
     projetos: Prisma.$ProjetoPayload<ExtArgs>[]
+    tokens: Prisma.$TokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1115,6 +1218,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   tarefas_resp<T extends Prisma.Usuario$tarefas_respArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$tarefas_respArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TarefaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tarefas<T extends Prisma.Usuario$tarefasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$tarefasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioEmTarefaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projetos<T extends Prisma.Usuario$projetosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$projetosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjetoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tokens<T extends Prisma.Usuario$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1633,6 +1737,30 @@ export type Usuario$projetosArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ProjetoScalarFieldEnum | Prisma.ProjetoScalarFieldEnum[]
+}
+
+/**
+ * Usuario.tokens
+ */
+export type Usuario$tokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Token
+   */
+  select?: Prisma.TokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Token
+   */
+  omit?: Prisma.TokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TokenInclude<ExtArgs> | null
+  where?: Prisma.TokenWhereInput
+  orderBy?: Prisma.TokenOrderByWithRelationInput | Prisma.TokenOrderByWithRelationInput[]
+  cursor?: Prisma.TokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TokenScalarFieldEnum | Prisma.TokenScalarFieldEnum[]
 }
 
 /**

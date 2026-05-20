@@ -54,7 +54,8 @@ export const ModelName = {
   Usuario: 'Usuario',
   Projeto: 'Projeto',
   Tarefa: 'Tarefa',
-  UsuarioEmTarefa: 'UsuarioEmTarefa'
+  UsuarioEmTarefa: 'UsuarioEmTarefa',
+  Token: 'Token'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -117,6 +118,18 @@ export const UsuarioEmTarefaScalarFieldEnum = {
 } as const
 
 export type UsuarioEmTarefaScalarFieldEnum = (typeof UsuarioEmTarefaScalarFieldEnum)[keyof typeof UsuarioEmTarefaScalarFieldEnum]
+
+
+export const TokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  type: 'type',
+  revoked: 'revoked',
+  expiresAt: 'expiresAt',
+  usuarioId: 'usuarioId'
+} as const
+
+export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
 
 
 export const SortOrder = {
