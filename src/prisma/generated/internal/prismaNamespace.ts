@@ -819,8 +819,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UsuarioScalarFieldEnum = {
   id: 'id',
-  nome: 'nome',
-  nivel_acesso: 'nivel_acesso'
+  nome: 'nome'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -844,7 +843,6 @@ export const TarefaScalarFieldEnum = {
   descr: 'descr',
   dono_id: 'dono_id',
   resp_id: 'resp_id',
-  nivel_acesso: 'nivel_acesso',
   data_i: 'data_i',
   data_v: 'data_v',
   data_f: 'data_f',
@@ -922,20 +920,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-/**
- * Reference to a field of type 'NivelAcesso'
- */
-export type EnumNivelAcessoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NivelAcesso'>
-    
-
-
-/**
- * Reference to a field of type 'NivelAcesso[]'
- */
-export type ListEnumNivelAcessoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NivelAcesso[]'>
     
 
 

@@ -47,7 +47,6 @@ export type TarefaMinAggregateOutputType = {
   descr: string | null
   dono_id: number | null
   resp_id: number | null
-  nivel_acesso: $Enums.NivelAcesso | null
   data_i: Date | null
   data_v: Date | null
   data_f: Date | null
@@ -62,7 +61,6 @@ export type TarefaMaxAggregateOutputType = {
   descr: string | null
   dono_id: number | null
   resp_id: number | null
-  nivel_acesso: $Enums.NivelAcesso | null
   data_i: Date | null
   data_v: Date | null
   data_f: Date | null
@@ -77,7 +75,6 @@ export type TarefaCountAggregateOutputType = {
   descr: number
   dono_id: number
   resp_id: number
-  nivel_acesso: number
   data_i: number
   data_v: number
   data_f: number
@@ -108,7 +105,6 @@ export type TarefaMinAggregateInputType = {
   descr?: true
   dono_id?: true
   resp_id?: true
-  nivel_acesso?: true
   data_i?: true
   data_v?: true
   data_f?: true
@@ -123,7 +119,6 @@ export type TarefaMaxAggregateInputType = {
   descr?: true
   dono_id?: true
   resp_id?: true
-  nivel_acesso?: true
   data_i?: true
   data_v?: true
   data_f?: true
@@ -138,7 +133,6 @@ export type TarefaCountAggregateInputType = {
   descr?: true
   dono_id?: true
   resp_id?: true
-  nivel_acesso?: true
   data_i?: true
   data_v?: true
   data_f?: true
@@ -240,7 +234,6 @@ export type TarefaGroupByOutputType = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date
   data_v: Date
   data_f: Date
@@ -278,7 +271,6 @@ export type TarefaWhereInput = {
   descr?: Prisma.StringFilter<"Tarefa"> | string
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFilter<"Tarefa"> | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
@@ -297,7 +289,6 @@ export type TarefaOrderByWithRelationInput = {
   descr?: Prisma.SortOrder
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
-  nivel_acesso?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
   data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
@@ -319,7 +310,6 @@ export type TarefaWhereUniqueInput = Prisma.AtLeast<{
   descr?: Prisma.StringFilter<"Tarefa"> | string
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFilter<"Tarefa"> | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
@@ -338,7 +328,6 @@ export type TarefaOrderByWithAggregationInput = {
   descr?: Prisma.SortOrder
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
-  nivel_acesso?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
   data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
@@ -361,7 +350,6 @@ export type TarefaScalarWhereWithAggregatesInput = {
   descr?: Prisma.StringWithAggregatesFilter<"Tarefa"> | string
   dono_id?: Prisma.IntWithAggregatesFilter<"Tarefa"> | number
   resp_id?: Prisma.IntWithAggregatesFilter<"Tarefa"> | number
-  nivel_acesso?: Prisma.EnumNivelAcessoWithAggregatesFilter<"Tarefa"> | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
   data_v?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
@@ -372,7 +360,6 @@ export type TarefaScalarWhereWithAggregatesInput = {
 export type TarefaCreateInput = {
   titulo_trf: string
   descr: string
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -391,7 +378,6 @@ export type TarefaUncheckedCreateInput = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -403,7 +389,6 @@ export type TarefaUncheckedCreateInput = {
 export type TarefaUpdateInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -422,7 +407,6 @@ export type TarefaUncheckedUpdateInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -438,7 +422,6 @@ export type TarefaCreateManyInput = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -449,7 +432,6 @@ export type TarefaCreateManyInput = {
 export type TarefaUpdateManyMutationInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -464,7 +446,6 @@ export type TarefaUncheckedUpdateManyInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -489,7 +470,6 @@ export type TarefaCountOrderByAggregateInput = {
   descr?: Prisma.SortOrder
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
-  nivel_acesso?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
   data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
@@ -511,7 +491,6 @@ export type TarefaMaxOrderByAggregateInput = {
   descr?: Prisma.SortOrder
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
-  nivel_acesso?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
   data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
@@ -526,7 +505,6 @@ export type TarefaMinOrderByAggregateInput = {
   descr?: Prisma.SortOrder
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
-  nivel_acesso?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
   data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
@@ -701,7 +679,6 @@ export type TarefaUpdateOneRequiredWithoutUsuariosNestedInput = {
 export type TarefaCreateWithoutDonoInput = {
   titulo_trf: string
   descr: string
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -718,7 +695,6 @@ export type TarefaUncheckedCreateWithoutDonoInput = {
   titulo_trf: string
   descr: string
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -740,7 +716,6 @@ export type TarefaCreateManyDonoInputEnvelope = {
 export type TarefaCreateWithoutResponsavelInput = {
   titulo_trf: string
   descr: string
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -757,7 +732,6 @@ export type TarefaUncheckedCreateWithoutResponsavelInput = {
   titulo_trf: string
   descr: string
   dono_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -802,7 +776,6 @@ export type TarefaScalarWhereInput = {
   descr?: Prisma.StringFilter<"Tarefa"> | string
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFilter<"Tarefa"> | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
@@ -829,7 +802,6 @@ export type TarefaUpdateManyWithWhereWithoutResponsavelInput = {
 export type TarefaCreateWithoutProjetoInput = {
   titulo_trf: string
   descr: string
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -846,7 +818,6 @@ export type TarefaUncheckedCreateWithoutProjetoInput = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -884,7 +855,6 @@ export type TarefaUpdateManyWithWhereWithoutProjetoInput = {
 export type TarefaCreateWithoutUsuariosInput = {
   titulo_trf: string
   descr: string
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -902,7 +872,6 @@ export type TarefaUncheckedCreateWithoutUsuariosInput = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -929,7 +898,6 @@ export type TarefaUpdateToOneWithWhereWithoutUsuariosInput = {
 export type TarefaUpdateWithoutUsuariosInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -947,7 +915,6 @@ export type TarefaUncheckedUpdateWithoutUsuariosInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -961,7 +928,6 @@ export type TarefaCreateManyDonoInput = {
   titulo_trf: string
   descr: string
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -975,7 +941,6 @@ export type TarefaCreateManyResponsavelInput = {
   titulo_trf: string
   descr: string
   dono_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -986,7 +951,6 @@ export type TarefaCreateManyResponsavelInput = {
 export type TarefaUpdateWithoutDonoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1003,7 +967,6 @@ export type TarefaUncheckedUpdateWithoutDonoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1018,7 +981,6 @@ export type TarefaUncheckedUpdateManyWithoutDonoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1029,7 +991,6 @@ export type TarefaUncheckedUpdateManyWithoutDonoInput = {
 export type TarefaUpdateWithoutResponsavelInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1046,7 +1007,6 @@ export type TarefaUncheckedUpdateWithoutResponsavelInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1061,7 +1021,6 @@ export type TarefaUncheckedUpdateManyWithoutResponsavelInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1075,7 +1034,6 @@ export type TarefaCreateManyProjetoInput = {
   descr: string
   dono_id: number
   resp_id: number
-  nivel_acesso: $Enums.NivelAcesso
   data_i: Date | string
   data_v: Date | string
   data_f: Date | string
@@ -1086,7 +1044,6 @@ export type TarefaCreateManyProjetoInput = {
 export type TarefaUpdateWithoutProjetoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1103,7 +1060,6 @@ export type TarefaUncheckedUpdateWithoutProjetoInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1118,7 +1074,6 @@ export type TarefaUncheckedUpdateManyWithoutProjetoInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
-  nivel_acesso?: Prisma.EnumNivelAcessoFieldUpdateOperationsInput | $Enums.NivelAcesso
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1164,7 +1119,6 @@ export type TarefaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   descr?: boolean
   dono_id?: boolean
   resp_id?: boolean
-  nivel_acesso?: boolean
   data_i?: boolean
   data_v?: boolean
   data_f?: boolean
@@ -1184,7 +1138,6 @@ export type TarefaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   descr?: boolean
   dono_id?: boolean
   resp_id?: boolean
-  nivel_acesso?: boolean
   data_i?: boolean
   data_v?: boolean
   data_f?: boolean
@@ -1202,7 +1155,6 @@ export type TarefaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   descr?: boolean
   dono_id?: boolean
   resp_id?: boolean
-  nivel_acesso?: boolean
   data_i?: boolean
   data_v?: boolean
   data_f?: boolean
@@ -1220,7 +1172,6 @@ export type TarefaSelectScalar = {
   descr?: boolean
   dono_id?: boolean
   resp_id?: boolean
-  nivel_acesso?: boolean
   data_i?: boolean
   data_v?: boolean
   data_f?: boolean
@@ -1228,7 +1179,7 @@ export type TarefaSelectScalar = {
   status?: boolean
 }
 
-export type TarefaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projeto_id" | "titulo_trf" | "descr" | "dono_id" | "resp_id" | "nivel_acesso" | "data_i" | "data_v" | "data_f" | "prioridade" | "status", ExtArgs["result"]["tarefa"]>
+export type TarefaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projeto_id" | "titulo_trf" | "descr" | "dono_id" | "resp_id" | "data_i" | "data_v" | "data_f" | "prioridade" | "status", ExtArgs["result"]["tarefa"]>
 export type TarefaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projeto?: boolean | Prisma.ProjetoDefaultArgs<ExtArgs>
   dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
@@ -1262,7 +1213,6 @@ export type $TarefaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     descr: string
     dono_id: number
     resp_id: number
-    nivel_acesso: $Enums.NivelAcesso
     data_i: Date
     data_v: Date
     data_f: Date
@@ -1701,7 +1651,6 @@ export interface TarefaFieldRefs {
   readonly descr: Prisma.FieldRef<"Tarefa", 'String'>
   readonly dono_id: Prisma.FieldRef<"Tarefa", 'Int'>
   readonly resp_id: Prisma.FieldRef<"Tarefa", 'Int'>
-  readonly nivel_acesso: Prisma.FieldRef<"Tarefa", 'NivelAcesso'>
   readonly data_i: Prisma.FieldRef<"Tarefa", 'DateTime'>
   readonly data_v: Prisma.FieldRef<"Tarefa", 'DateTime'>
   readonly data_f: Prisma.FieldRef<"Tarefa", 'DateTime'>

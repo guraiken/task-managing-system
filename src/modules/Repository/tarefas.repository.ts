@@ -46,12 +46,11 @@ export function criarTarefa(dados: CriarTarefaDados) {
       data_v: dados.data_vencimento,
       data_f: dados.data_vencimento,
       prioridade: dados.prioridade,
-      nivel_acesso: "A",
       status: "Andamento",
       projeto: {
         connect: {
           id: dados.projetoId,
-        },
+        }, 
       },
       dono: {
         connect: {

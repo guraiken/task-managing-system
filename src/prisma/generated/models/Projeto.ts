@@ -28,72 +28,56 @@ export type AggregateProjeto = {
 
 export type ProjetoAvgAggregateOutputType = {
   id: number | null
-  dono_id: number | null
 }
 
 export type ProjetoSumAggregateOutputType = {
   id: number | null
-  dono_id: number | null
 }
 
 export type ProjetoMinAggregateOutputType = {
   id: number | null
-  dono_id: number | null
-  titulo_prjt: string | null
-  area: string | null
-  descr: string | null
+  nome: string | null
+  area_conhecimento: string | null
 }
 
 export type ProjetoMaxAggregateOutputType = {
   id: number | null
-  dono_id: number | null
-  titulo_prjt: string | null
-  area: string | null
-  descr: string | null
+  nome: string | null
+  area_conhecimento: string | null
 }
 
 export type ProjetoCountAggregateOutputType = {
   id: number
-  dono_id: number
-  titulo_prjt: number
-  area: number
-  descr: number
+  nome: number
+  area_conhecimento: number
   _all: number
 }
 
 
 export type ProjetoAvgAggregateInputType = {
   id?: true
-  dono_id?: true
 }
 
 export type ProjetoSumAggregateInputType = {
   id?: true
-  dono_id?: true
 }
 
 export type ProjetoMinAggregateInputType = {
   id?: true
-  dono_id?: true
-  titulo_prjt?: true
-  area?: true
-  descr?: true
+  nome?: true
+  area_conhecimento?: true
 }
 
 export type ProjetoMaxAggregateInputType = {
   id?: true
-  dono_id?: true
-  titulo_prjt?: true
-  area?: true
-  descr?: true
+  nome?: true
+  area_conhecimento?: true
 }
 
 export type ProjetoCountAggregateInputType = {
   id?: true
-  dono_id?: true
-  titulo_prjt?: true
-  area?: true
-  descr?: true
+  nome?: true
+  area_conhecimento?: true
   _all?: true
 }
 
@@ -185,10 +169,8 @@ export type ProjetoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type ProjetoGroupByOutputType = {
   id: number
-  dono_id: number
-  titulo_prjt: string
-  area: string
-  descr: string
+  nome: string
+  area_conhecimento: string
   _count: ProjetoCountAggregateOutputType | null
   _avg: ProjetoAvgAggregateOutputType | null
   _sum: ProjetoSumAggregateOutputType | null
@@ -216,22 +198,16 @@ export type ProjetoWhereInput = {
   OR?: Prisma.ProjetoWhereInput[]
   NOT?: Prisma.ProjetoWhereInput | Prisma.ProjetoWhereInput[]
   id?: Prisma.IntFilter<"Projeto"> | number
-  dono_id?: Prisma.IntFilter<"Projeto"> | number
-  titulo_prjt?: Prisma.StringFilter<"Projeto"> | string
-  area?: Prisma.StringFilter<"Projeto"> | string
-  descr?: Prisma.StringFilter<"Projeto"> | string
-  dono?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
-  tarefas?: Prisma.TarefaListRelationFilter
+  nome?: Prisma.StringFilter<"Projeto"> | string
+  area_conhecimento?: Prisma.StringFilter<"Projeto"> | string
+  membros?: Prisma.UsuarioEmProjetoListRelationFilter
 }
 
 export type ProjetoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-  titulo_prjt?: Prisma.SortOrder
-  area?: Prisma.SortOrder
-  descr?: Prisma.SortOrder
-  dono?: Prisma.UsuarioOrderByWithRelationInput
-  tarefas?: Prisma.TarefaOrderByRelationAggregateInput
+  nome?: Prisma.SortOrder
+  area_conhecimento?: Prisma.SortOrder
+  membros?: Prisma.UsuarioEmProjetoOrderByRelationAggregateInput
 }
 
 export type ProjetoWhereUniqueInput = Prisma.AtLeast<{
@@ -239,20 +215,15 @@ export type ProjetoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProjetoWhereInput | Prisma.ProjetoWhereInput[]
   OR?: Prisma.ProjetoWhereInput[]
   NOT?: Prisma.ProjetoWhereInput | Prisma.ProjetoWhereInput[]
-  dono_id?: Prisma.IntFilter<"Projeto"> | number
-  titulo_prjt?: Prisma.StringFilter<"Projeto"> | string
-  area?: Prisma.StringFilter<"Projeto"> | string
-  descr?: Prisma.StringFilter<"Projeto"> | string
-  dono?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
-  tarefas?: Prisma.TarefaListRelationFilter
+  nome?: Prisma.StringFilter<"Projeto"> | string
+  area_conhecimento?: Prisma.StringFilter<"Projeto"> | string
+  membros?: Prisma.UsuarioEmProjetoListRelationFilter
 }, "id">
 
 export type ProjetoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-  titulo_prjt?: Prisma.SortOrder
-  area?: Prisma.SortOrder
-  descr?: Prisma.SortOrder
+  nome?: Prisma.SortOrder
+  area_conhecimento?: Prisma.SortOrder
   _count?: Prisma.ProjetoCountOrderByAggregateInput
   _avg?: Prisma.ProjetoAvgOrderByAggregateInput
   _max?: Prisma.ProjetoMaxOrderByAggregateInput
@@ -265,110 +236,51 @@ export type ProjetoScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProjetoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProjetoScalarWhereWithAggregatesInput | Prisma.ProjetoScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Projeto"> | number
-  dono_id?: Prisma.IntWithAggregatesFilter<"Projeto"> | number
-  titulo_prjt?: Prisma.StringWithAggregatesFilter<"Projeto"> | string
-  area?: Prisma.StringWithAggregatesFilter<"Projeto"> | string
-  descr?: Prisma.StringWithAggregatesFilter<"Projeto"> | string
+  nome?: Prisma.StringWithAggregatesFilter<"Projeto"> | string
+  area_conhecimento?: Prisma.StringWithAggregatesFilter<"Projeto"> | string
 }
 
 export type ProjetoCreateInput = {
-  titulo_prjt: string
-  area?: string
-  descr?: string
-  dono: Prisma.UsuarioCreateNestedOneWithoutProjetosInput
-  tarefas?: Prisma.TarefaCreateNestedManyWithoutProjetoInput
+  nome: string
+  area_conhecimento: string
+  membros?: Prisma.UsuarioEmProjetoCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoUncheckedCreateInput = {
   id?: number
-  dono_id: number
-  titulo_prjt: string
-  area?: string
-  descr?: string
-  tarefas?: Prisma.TarefaUncheckedCreateNestedManyWithoutProjetoInput
+  nome: string
+  area_conhecimento: string
+  membros?: Prisma.UsuarioEmProjetoUncheckedCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoUpdateInput = {
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutProjetosNestedInput
-  tarefas?: Prisma.TarefaUpdateManyWithoutProjetoNestedInput
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  membros?: Prisma.UsuarioEmProjetoUpdateManyWithoutProjetoNestedInput
 }
 
 export type ProjetoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  dono_id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-  tarefas?: Prisma.TarefaUncheckedUpdateManyWithoutProjetoNestedInput
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  membros?: Prisma.UsuarioEmProjetoUncheckedUpdateManyWithoutProjetoNestedInput
 }
 
 export type ProjetoCreateManyInput = {
   id?: number
-  dono_id: number
-  titulo_prjt: string
-  area?: string
-  descr?: string
+  nome: string
+  area_conhecimento: string
 }
 
 export type ProjetoUpdateManyMutationInput = {
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjetoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  dono_id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type ProjetoListRelationFilter = {
-  every?: Prisma.ProjetoWhereInput
-  some?: Prisma.ProjetoWhereInput
-  none?: Prisma.ProjetoWhereInput
-}
-
-export type ProjetoOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
-export type ProjetoCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-  titulo_prjt?: Prisma.SortOrder
-  area?: Prisma.SortOrder
-  descr?: Prisma.SortOrder
-}
-
-export type ProjetoAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-}
-
-export type ProjetoMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-  titulo_prjt?: Prisma.SortOrder
-  area?: Prisma.SortOrder
-  descr?: Prisma.SortOrder
-}
-
-export type ProjetoMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
-  titulo_prjt?: Prisma.SortOrder
-  area?: Prisma.SortOrder
-  descr?: Prisma.SortOrder
-}
-
-export type ProjetoSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  dono_id?: Prisma.SortOrder
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProjetoScalarRelationFilter = {
@@ -376,187 +288,82 @@ export type ProjetoScalarRelationFilter = {
   isNot?: Prisma.ProjetoWhereInput
 }
 
-export type ProjetoCreateNestedManyWithoutDonoInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput> | Prisma.ProjetoCreateWithoutDonoInput[] | Prisma.ProjetoUncheckedCreateWithoutDonoInput[]
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutDonoInput | Prisma.ProjetoCreateOrConnectWithoutDonoInput[]
-  createMany?: Prisma.ProjetoCreateManyDonoInputEnvelope
-  connect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
+export type ProjetoCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  nome?: Prisma.SortOrder
+  area_conhecimento?: Prisma.SortOrder
 }
 
-export type ProjetoUncheckedCreateNestedManyWithoutDonoInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput> | Prisma.ProjetoCreateWithoutDonoInput[] | Prisma.ProjetoUncheckedCreateWithoutDonoInput[]
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutDonoInput | Prisma.ProjetoCreateOrConnectWithoutDonoInput[]
-  createMany?: Prisma.ProjetoCreateManyDonoInputEnvelope
-  connect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
+export type ProjetoAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
 }
 
-export type ProjetoUpdateManyWithoutDonoNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput> | Prisma.ProjetoCreateWithoutDonoInput[] | Prisma.ProjetoUncheckedCreateWithoutDonoInput[]
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutDonoInput | Prisma.ProjetoCreateOrConnectWithoutDonoInput[]
-  upsert?: Prisma.ProjetoUpsertWithWhereUniqueWithoutDonoInput | Prisma.ProjetoUpsertWithWhereUniqueWithoutDonoInput[]
-  createMany?: Prisma.ProjetoCreateManyDonoInputEnvelope
-  set?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  disconnect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  delete?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  connect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  update?: Prisma.ProjetoUpdateWithWhereUniqueWithoutDonoInput | Prisma.ProjetoUpdateWithWhereUniqueWithoutDonoInput[]
-  updateMany?: Prisma.ProjetoUpdateManyWithWhereWithoutDonoInput | Prisma.ProjetoUpdateManyWithWhereWithoutDonoInput[]
-  deleteMany?: Prisma.ProjetoScalarWhereInput | Prisma.ProjetoScalarWhereInput[]
+export type ProjetoMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  nome?: Prisma.SortOrder
+  area_conhecimento?: Prisma.SortOrder
 }
 
-export type ProjetoUncheckedUpdateManyWithoutDonoNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput> | Prisma.ProjetoCreateWithoutDonoInput[] | Prisma.ProjetoUncheckedCreateWithoutDonoInput[]
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutDonoInput | Prisma.ProjetoCreateOrConnectWithoutDonoInput[]
-  upsert?: Prisma.ProjetoUpsertWithWhereUniqueWithoutDonoInput | Prisma.ProjetoUpsertWithWhereUniqueWithoutDonoInput[]
-  createMany?: Prisma.ProjetoCreateManyDonoInputEnvelope
-  set?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  disconnect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  delete?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  connect?: Prisma.ProjetoWhereUniqueInput | Prisma.ProjetoWhereUniqueInput[]
-  update?: Prisma.ProjetoUpdateWithWhereUniqueWithoutDonoInput | Prisma.ProjetoUpdateWithWhereUniqueWithoutDonoInput[]
-  updateMany?: Prisma.ProjetoUpdateManyWithWhereWithoutDonoInput | Prisma.ProjetoUpdateManyWithWhereWithoutDonoInput[]
-  deleteMany?: Prisma.ProjetoScalarWhereInput | Prisma.ProjetoScalarWhereInput[]
+export type ProjetoMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  nome?: Prisma.SortOrder
+  area_conhecimento?: Prisma.SortOrder
 }
 
-export type ProjetoCreateNestedOneWithoutTarefasInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutTarefasInput
+export type ProjetoSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+}
+
+export type ProjetoCreateNestedOneWithoutMembrosInput = {
+  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutMembrosInput, Prisma.ProjetoUncheckedCreateWithoutMembrosInput>
+  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutMembrosInput
   connect?: Prisma.ProjetoWhereUniqueInput
 }
 
-export type ProjetoUpdateOneRequiredWithoutTarefasNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
-  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutTarefasInput
-  upsert?: Prisma.ProjetoUpsertWithoutTarefasInput
+export type ProjetoUpdateOneRequiredWithoutMembrosNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutMembrosInput, Prisma.ProjetoUncheckedCreateWithoutMembrosInput>
+  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutMembrosInput
+  upsert?: Prisma.ProjetoUpsertWithoutMembrosInput
   connect?: Prisma.ProjetoWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjetoUpdateToOneWithWhereWithoutTarefasInput, Prisma.ProjetoUpdateWithoutTarefasInput>, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjetoUpdateToOneWithWhereWithoutMembrosInput, Prisma.ProjetoUpdateWithoutMembrosInput>, Prisma.ProjetoUncheckedUpdateWithoutMembrosInput>
 }
 
-export type ProjetoCreateWithoutDonoInput = {
-  titulo_prjt: string
-  area?: string
-  descr?: string
-  tarefas?: Prisma.TarefaCreateNestedManyWithoutProjetoInput
+export type ProjetoCreateWithoutMembrosInput = {
+  nome: string
+  area_conhecimento: string
 }
 
-export type ProjetoUncheckedCreateWithoutDonoInput = {
+export type ProjetoUncheckedCreateWithoutMembrosInput = {
   id?: number
-  titulo_prjt: string
-  area?: string
-  descr?: string
-  tarefas?: Prisma.TarefaUncheckedCreateNestedManyWithoutProjetoInput
+  nome: string
+  area_conhecimento: string
 }
 
-export type ProjetoCreateOrConnectWithoutDonoInput = {
+export type ProjetoCreateOrConnectWithoutMembrosInput = {
   where: Prisma.ProjetoWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput>
+  create: Prisma.XOR<Prisma.ProjetoCreateWithoutMembrosInput, Prisma.ProjetoUncheckedCreateWithoutMembrosInput>
 }
 
-export type ProjetoCreateManyDonoInputEnvelope = {
-  data: Prisma.ProjetoCreateManyDonoInput | Prisma.ProjetoCreateManyDonoInput[]
-  skipDuplicates?: boolean
-}
-
-export type ProjetoUpsertWithWhereUniqueWithoutDonoInput = {
-  where: Prisma.ProjetoWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjetoUpdateWithoutDonoInput, Prisma.ProjetoUncheckedUpdateWithoutDonoInput>
-  create: Prisma.XOR<Prisma.ProjetoCreateWithoutDonoInput, Prisma.ProjetoUncheckedCreateWithoutDonoInput>
-}
-
-export type ProjetoUpdateWithWhereUniqueWithoutDonoInput = {
-  where: Prisma.ProjetoWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjetoUpdateWithoutDonoInput, Prisma.ProjetoUncheckedUpdateWithoutDonoInput>
-}
-
-export type ProjetoUpdateManyWithWhereWithoutDonoInput = {
-  where: Prisma.ProjetoScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjetoUpdateManyMutationInput, Prisma.ProjetoUncheckedUpdateManyWithoutDonoInput>
-}
-
-export type ProjetoScalarWhereInput = {
-  AND?: Prisma.ProjetoScalarWhereInput | Prisma.ProjetoScalarWhereInput[]
-  OR?: Prisma.ProjetoScalarWhereInput[]
-  NOT?: Prisma.ProjetoScalarWhereInput | Prisma.ProjetoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Projeto"> | number
-  dono_id?: Prisma.IntFilter<"Projeto"> | number
-  titulo_prjt?: Prisma.StringFilter<"Projeto"> | string
-  area?: Prisma.StringFilter<"Projeto"> | string
-  descr?: Prisma.StringFilter<"Projeto"> | string
-}
-
-export type ProjetoCreateWithoutTarefasInput = {
-  titulo_prjt: string
-  area?: string
-  descr?: string
-  dono: Prisma.UsuarioCreateNestedOneWithoutProjetosInput
-}
-
-export type ProjetoUncheckedCreateWithoutTarefasInput = {
-  id?: number
-  dono_id: number
-  titulo_prjt: string
-  area?: string
-  descr?: string
-}
-
-export type ProjetoCreateOrConnectWithoutTarefasInput = {
-  where: Prisma.ProjetoWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
-}
-
-export type ProjetoUpsertWithoutTarefasInput = {
-  update: Prisma.XOR<Prisma.ProjetoUpdateWithoutTarefasInput, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
-  create: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
+export type ProjetoUpsertWithoutMembrosInput = {
+  update: Prisma.XOR<Prisma.ProjetoUpdateWithoutMembrosInput, Prisma.ProjetoUncheckedUpdateWithoutMembrosInput>
+  create: Prisma.XOR<Prisma.ProjetoCreateWithoutMembrosInput, Prisma.ProjetoUncheckedCreateWithoutMembrosInput>
   where?: Prisma.ProjetoWhereInput
 }
 
-export type ProjetoUpdateToOneWithWhereWithoutTarefasInput = {
+export type ProjetoUpdateToOneWithWhereWithoutMembrosInput = {
   where?: Prisma.ProjetoWhereInput
-  data: Prisma.XOR<Prisma.ProjetoUpdateWithoutTarefasInput, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
+  data: Prisma.XOR<Prisma.ProjetoUpdateWithoutMembrosInput, Prisma.ProjetoUncheckedUpdateWithoutMembrosInput>
 }
 
-export type ProjetoUpdateWithoutTarefasInput = {
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutProjetosNestedInput
+export type ProjetoUpdateWithoutMembrosInput = {
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type ProjetoUncheckedUpdateWithoutTarefasInput = {
+export type ProjetoUncheckedUpdateWithoutMembrosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  dono_id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type ProjetoCreateManyDonoInput = {
-  id?: number
-  titulo_prjt: string
-  area?: string
-  descr?: string
-}
-
-export type ProjetoUpdateWithoutDonoInput = {
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-  tarefas?: Prisma.TarefaUpdateManyWithoutProjetoNestedInput
-}
-
-export type ProjetoUncheckedUpdateWithoutDonoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
-  tarefas?: Prisma.TarefaUncheckedUpdateManyWithoutProjetoNestedInput
-}
-
-export type ProjetoUncheckedUpdateManyWithoutDonoInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo_prjt?: Prisma.StringFieldUpdateOperationsInput | string
-  area?: Prisma.StringFieldUpdateOperationsInput | string
-  descr?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -565,11 +372,11 @@ export type ProjetoUncheckedUpdateManyWithoutDonoInput = {
  */
 
 export type ProjetoCountOutputType = {
-  tarefas: number
+  membros: number
 }
 
 export type ProjetoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  tarefas?: boolean | ProjetoCountOutputTypeCountTarefasArgs
+  membros?: boolean | ProjetoCountOutputTypeCountMembrosArgs
 }
 
 /**
@@ -585,73 +392,54 @@ export type ProjetoCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * ProjetoCountOutputType without action
  */
-export type ProjetoCountOutputTypeCountTarefasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TarefaWhereInput
+export type ProjetoCountOutputTypeCountMembrosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UsuarioEmProjetoWhereInput
 }
 
 
 export type ProjetoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  dono_id?: boolean
-  titulo_prjt?: boolean
-  area?: boolean
-  descr?: boolean
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-  tarefas?: boolean | Prisma.Projeto$tarefasArgs<ExtArgs>
+  nome?: boolean
+  area_conhecimento?: boolean
+  membros?: boolean | Prisma.Projeto$membrosArgs<ExtArgs>
   _count?: boolean | Prisma.ProjetoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projeto"]>
 
 export type ProjetoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  dono_id?: boolean
-  titulo_prjt?: boolean
-  area?: boolean
-  descr?: boolean
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
+  nome?: boolean
+  area_conhecimento?: boolean
 }, ExtArgs["result"]["projeto"]>
 
 export type ProjetoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  dono_id?: boolean
-  titulo_prjt?: boolean
-  area?: boolean
-  descr?: boolean
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
+  nome?: boolean
+  area_conhecimento?: boolean
 }, ExtArgs["result"]["projeto"]>
 
 export type ProjetoSelectScalar = {
   id?: boolean
-  dono_id?: boolean
-  titulo_prjt?: boolean
-  area?: boolean
-  descr?: boolean
+  nome?: boolean
+  area_conhecimento?: boolean
 }
 
-export type ProjetoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "dono_id" | "titulo_prjt" | "area" | "descr", ExtArgs["result"]["projeto"]>
+export type ProjetoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "area_conhecimento", ExtArgs["result"]["projeto"]>
 export type ProjetoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-  tarefas?: boolean | Prisma.Projeto$tarefasArgs<ExtArgs>
+  membros?: boolean | Prisma.Projeto$membrosArgs<ExtArgs>
   _count?: boolean | Prisma.ProjetoCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type ProjetoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-}
-export type ProjetoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-}
+export type ProjetoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ProjetoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $ProjetoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Projeto"
   objects: {
-    dono: Prisma.$UsuarioPayload<ExtArgs>
-    tarefas: Prisma.$TarefaPayload<ExtArgs>[]
+    membros: Prisma.$UsuarioEmProjetoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    dono_id: number
-    titulo_prjt: string
-    area: string
-    descr: string
+    nome: string
+    area_conhecimento: string
   }, ExtArgs["result"]["projeto"]>
   composites: {}
 }
@@ -1046,8 +834,7 @@ readonly fields: ProjetoFieldRefs;
  */
 export interface Prisma__ProjetoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  dono<T extends Prisma.UsuarioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuarioDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  tarefas<T extends Prisma.Projeto$tarefasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Projeto$tarefasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TarefaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  membros<T extends Prisma.Projeto$membrosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Projeto$membrosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioEmProjetoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1078,10 +865,8 @@ export interface Prisma__ProjetoClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface ProjetoFieldRefs {
   readonly id: Prisma.FieldRef<"Projeto", 'Int'>
-  readonly dono_id: Prisma.FieldRef<"Projeto", 'Int'>
-  readonly titulo_prjt: Prisma.FieldRef<"Projeto", 'String'>
-  readonly area: Prisma.FieldRef<"Projeto", 'String'>
-  readonly descr: Prisma.FieldRef<"Projeto", 'String'>
+  readonly nome: Prisma.FieldRef<"Projeto", 'String'>
+  readonly area_conhecimento: Prisma.FieldRef<"Projeto", 'String'>
 }
     
 
@@ -1336,10 +1121,6 @@ export type ProjetoCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.ProjetoCreateManyInput | Prisma.ProjetoCreateManyInput[]
   skipDuplicates?: boolean
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjetoIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1410,10 +1191,6 @@ export type ProjetoUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Projetos to update.
    */
   limit?: number
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjetoIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1483,27 +1260,27 @@ export type ProjetoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Projeto.tarefas
+ * Projeto.membros
  */
-export type Projeto$tarefasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Projeto$membrosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Tarefa
+   * Select specific fields to fetch from the UsuarioEmProjeto
    */
-  select?: Prisma.TarefaSelect<ExtArgs> | null
+  select?: Prisma.UsuarioEmProjetoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Tarefa
+   * Omit specific fields from the UsuarioEmProjeto
    */
-  omit?: Prisma.TarefaOmit<ExtArgs> | null
+  omit?: Prisma.UsuarioEmProjetoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TarefaInclude<ExtArgs> | null
-  where?: Prisma.TarefaWhereInput
-  orderBy?: Prisma.TarefaOrderByWithRelationInput | Prisma.TarefaOrderByWithRelationInput[]
-  cursor?: Prisma.TarefaWhereUniqueInput
+  include?: Prisma.UsuarioEmProjetoInclude<ExtArgs> | null
+  where?: Prisma.UsuarioEmProjetoWhereInput
+  orderBy?: Prisma.UsuarioEmProjetoOrderByWithRelationInput | Prisma.UsuarioEmProjetoOrderByWithRelationInput[]
+  cursor?: Prisma.UsuarioEmProjetoWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TarefaScalarFieldEnum | Prisma.TarefaScalarFieldEnum[]
+  distinct?: Prisma.UsuarioEmProjetoScalarFieldEnum | Prisma.UsuarioEmProjetoScalarFieldEnum[]
 }
 
 /**

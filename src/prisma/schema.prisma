@@ -16,7 +16,6 @@ model Usuario {
   id Int @id @default(autoincrement())
 
   nome         String
-  nivel_acesso NivelAcesso
 
   tarefas_dono Tarefa[]  @relation("DonoTarefa")
   tarefas_resp Tarefa[]  @relation("ResponsavelTarefa")
@@ -25,13 +24,6 @@ model Usuario {
   tokens       Token[]
 }
 
-enum NivelAcesso {
-  A
-  B
-  C
-  D
-  E
-}
 
 model Projeto {
   id Int @id @default(autoincrement())
@@ -58,9 +50,7 @@ model Tarefa {
   dono         Usuario     @relation("DonoTarefa", fields: [dono_id], references: [id])
   resp_id      Int
   responsavel  Usuario     @relation("ResponsavelTarefa", fields: [resp_id], references: [id])
-  nivel_acesso NivelAcesso
   data_i       DateTime
-  data_v       DateTime
   data_f       DateTime
   prioridade   Prioridade
   status       Status

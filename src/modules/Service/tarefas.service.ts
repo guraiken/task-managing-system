@@ -1,21 +1,15 @@
-import {
-  buscarProjeto,
-  buscarUsuario,
-  criarTarefa,
-  
-} from "../Repository/tarefas.repository"
+import { buscarProjeto, buscarUsuario, criarTarefa  } from "../Repository/tarefas.repository"
 
-type Prioridade = "Baixa" | "Media" | "Alta"
 
 type CriarTarefaDados = {
   titulo?: string
   descricao?: string
   data_vencimento?: string
-  prioridade?: Prioridade
+  prioridade: "Baixa" | "Media" | "Alta"
   projetoId?: number
-  donoId?: number
-  responsavelId?: number
-  usuarioIds?: number[]
+  donoId: number
+  responsavelId: number
+  usuarioIds: number[]
 }
 
 
@@ -26,10 +20,6 @@ export async function criarTarefaService(dados: CriarTarefaDados) {
 
   if (!dados.data_vencimento) {
     throw new Error("Data de vencimento da tarefa e obrigatoria")
-  }
-
-  if (!dados.prioridade || !["Baixa", "Media", "Alta"].includes(dados.prioridade)) {
-    throw new Error("Prioridade deve ser Baixa, Media ou Alta")
   }
 
   const projetoId = dados.projetoId
@@ -54,7 +44,7 @@ export async function criarTarefaService(dados: CriarTarefaDados) {
     throw new Error("Informe pelo menos um usuario vinculado a tarefa")
   }
 
-  const usuarioIds = [...new Set(dados.usuarioIds)]
+  const usuarioIds = Array.from(new Set(dados.usuarioIds))
 
   if (!usuarioIds.every((usuarioId) => usuarioId > 0)) {
     throw new Error("Ids dos usuarios vinculados devem ser validos")
@@ -72,7 +62,7 @@ export async function criarTarefaService(dados: CriarTarefaDados) {
     throw new Error("Projeto informado nao existe")
   }
 
-  const usuariosParaValidar = [...new Set([donoId, responsavelId, ...usuarioIds])]
+  const usuariosParaValidar = Array.from(new Set([donoId, responsavelId, ...usuarioIds]))
   const usuarios = await buscarUsuario(usuariosParaValidar)
 
   if (usuarios.length !== usuariosParaValidar.length) {
