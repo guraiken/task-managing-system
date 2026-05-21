@@ -217,6 +217,7 @@ export type UsuarioWhereInput = {
   senha?: Prisma.StringFilter<"Usuario"> | string
   role?: Prisma.EnumRoleFilter<"Usuario"> | $Enums.Role
   tokens?: Prisma.TokenListRelationFilter
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -226,6 +227,7 @@ export type UsuarioOrderByWithRelationInput = {
   senha?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tokens?: Prisma.TokenOrderByRelationAggregateInput
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoOrderByRelationAggregateInput
 }
 
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -238,6 +240,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   senha?: Prisma.StringFilter<"Usuario"> | string
   role?: Prisma.EnumRoleFilter<"Usuario"> | $Enums.Role
   tokens?: Prisma.TokenListRelationFilter
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoListRelationFilter
 }, "id" | "email">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -270,6 +273,7 @@ export type UsuarioCreateInput = {
   senha: string
   role?: $Enums.Role
   tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -279,6 +283,7 @@ export type UsuarioUncheckedCreateInput = {
   senha: string
   role?: $Enums.Role
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -287,6 +292,7 @@ export type UsuarioUpdateInput = {
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -296,6 +302,7 @@ export type UsuarioUncheckedUpdateInput = {
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -374,6 +381,20 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type UsuarioCreateNestedOneWithoutUsuarioEmProjetosInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedCreateWithoutUsuarioEmProjetosInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutUsuarioEmProjetosInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneRequiredWithoutUsuarioEmProjetosNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedCreateWithoutUsuarioEmProjetosInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutUsuarioEmProjetosInput
+  upsert?: Prisma.UsuarioUpsertWithoutUsuarioEmProjetosInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutUsuarioEmProjetosInput, Prisma.UsuarioUpdateWithoutUsuarioEmProjetosInput>, Prisma.UsuarioUncheckedUpdateWithoutUsuarioEmProjetosInput>
+}
+
 export type UsuarioCreateNestedOneWithoutTokensInput = {
   create?: Prisma.XOR<Prisma.UsuarioCreateWithoutTokensInput, Prisma.UsuarioUncheckedCreateWithoutTokensInput>
   connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutTokensInput
@@ -388,11 +409,62 @@ export type UsuarioUpdateOneRequiredWithoutTokensNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutTokensInput, Prisma.UsuarioUpdateWithoutTokensInput>, Prisma.UsuarioUncheckedUpdateWithoutTokensInput>
 }
 
+export type UsuarioCreateWithoutUsuarioEmProjetosInput = {
+  email: string
+  nome: string
+  senha: string
+  role?: $Enums.Role
+  tokens?: Prisma.TokenCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioUncheckedCreateWithoutUsuarioEmProjetosInput = {
+  id?: number
+  email: string
+  nome: string
+  senha: string
+  role?: $Enums.Role
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioCreateOrConnectWithoutUsuarioEmProjetosInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedCreateWithoutUsuarioEmProjetosInput>
+}
+
+export type UsuarioUpsertWithoutUsuarioEmProjetosInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedUpdateWithoutUsuarioEmProjetosInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedCreateWithoutUsuarioEmProjetosInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutUsuarioEmProjetosInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutUsuarioEmProjetosInput, Prisma.UsuarioUncheckedUpdateWithoutUsuarioEmProjetosInput>
+}
+
+export type UsuarioUpdateWithoutUsuarioEmProjetosInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  tokens?: Prisma.TokenUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutUsuarioEmProjetosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
 export type UsuarioCreateWithoutTokensInput = {
   email: string
   nome: string
   senha: string
   role?: $Enums.Role
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTokensInput = {
@@ -401,6 +473,7 @@ export type UsuarioUncheckedCreateWithoutTokensInput = {
   nome: string
   senha: string
   role?: $Enums.Role
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTokensInput = {
@@ -424,6 +497,7 @@ export type UsuarioUpdateWithoutTokensInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTokensInput = {
@@ -432,6 +506,7 @@ export type UsuarioUncheckedUpdateWithoutTokensInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  usuarioEmProjetos?: Prisma.UsuarioEmProjetoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -441,10 +516,12 @@ export type UsuarioUncheckedUpdateWithoutTokensInput = {
 
 export type UsuarioCountOutputType = {
   tokens: number
+  usuarioEmProjetos: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tokens?: boolean | UsuarioCountOutputTypeCountTokensArgs
+  usuarioEmProjetos?: boolean | UsuarioCountOutputTypeCountUsuarioEmProjetosArgs
 }
 
 /**
@@ -464,6 +541,13 @@ export type UsuarioCountOutputTypeCountTokensArgs<ExtArgs extends runtime.Types.
   where?: Prisma.TokenWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountUsuarioEmProjetosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UsuarioEmProjetoWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -472,6 +556,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   senha?: boolean
   role?: boolean
   tokens?: boolean | Prisma.Usuario$tokensArgs<ExtArgs>
+  usuarioEmProjetos?: boolean | Prisma.Usuario$usuarioEmProjetosArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -502,6 +587,7 @@ export type UsuarioSelectScalar = {
 export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "nome" | "senha" | "role", ExtArgs["result"]["usuario"]>
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tokens?: boolean | Prisma.Usuario$tokensArgs<ExtArgs>
+  usuarioEmProjetos?: boolean | Prisma.Usuario$usuarioEmProjetosArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -511,6 +597,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Usuario"
   objects: {
     tokens: Prisma.$TokenPayload<ExtArgs>[]
+    usuarioEmProjetos: Prisma.$UsuarioEmProjetoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -913,6 +1000,7 @@ readonly fields: UsuarioFieldRefs;
 export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   tokens<T extends Prisma.Usuario$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  usuarioEmProjetos<T extends Prisma.Usuario$usuarioEmProjetosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$usuarioEmProjetosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioEmProjetoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1361,6 +1449,30 @@ export type Usuario$tokensArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.TokenScalarFieldEnum | Prisma.TokenScalarFieldEnum[]
+}
+
+/**
+ * Usuario.usuarioEmProjetos
+ */
+export type Usuario$usuarioEmProjetosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UsuarioEmProjeto
+   */
+  select?: Prisma.UsuarioEmProjetoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UsuarioEmProjeto
+   */
+  omit?: Prisma.UsuarioEmProjetoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UsuarioEmProjetoInclude<ExtArgs> | null
+  where?: Prisma.UsuarioEmProjetoWhereInput
+  orderBy?: Prisma.UsuarioEmProjetoOrderByWithRelationInput | Prisma.UsuarioEmProjetoOrderByWithRelationInput[]
+  cursor?: Prisma.UsuarioEmProjetoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UsuarioEmProjetoScalarFieldEnum | Prisma.UsuarioEmProjetoScalarFieldEnum[]
 }
 
 /**

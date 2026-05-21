@@ -21,7 +21,28 @@ model Usuario {
 
   tokens Token[]
 
+  usuarioEmProjetos UsuarioEmProjeto[]
+
   @@map("usuario")
+}
+
+model UsuarioEmProjeto {
+  projetoId Int
+  usuarioId Int
+  projeto   Projeto @relation(fields: [projetoId], references: [id])
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@id([projetoId, usuarioId])
+}
+
+model Projeto {
+  id                Int    @id @default(autoincrement())
+  nome              String
+  area_conhecimento String
+
+  membros UsuarioEmProjeto[]
+
+  @@map("projeto")
 }
 
 enum Role {

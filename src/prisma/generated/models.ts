@@ -9,5 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Usuario'
+export type * from './models/UsuarioEmProjeto'
+export type * from './models/Projeto'
 export type * from './models/Token'
 export type * from './commonInputTypes'
