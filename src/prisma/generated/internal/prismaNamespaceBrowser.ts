@@ -52,9 +52,11 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Usuario: 'Usuario',
-  UsuarioEmProjeto: 'UsuarioEmProjeto',
+  Token: 'Token',
   Projeto: 'Projeto',
-  Token: 'Token'
+  UsuarioEmProjeto: 'UsuarioEmProjeto',
+  Tarefa: 'Tarefa',
+  UsuarioEmTarefa: 'UsuarioEmTarefa'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -84,12 +86,16 @@ export const UsuarioScalarFieldEnum = {
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
-export const UsuarioEmProjetoScalarFieldEnum = {
-  projetoId: 'projetoId',
+export const TokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  type: 'type',
+  revoked: 'revoked',
+  expiresAt: 'expiresAt',
   usuarioId: 'usuarioId'
 } as const
 
-export type UsuarioEmProjetoScalarFieldEnum = (typeof UsuarioEmProjetoScalarFieldEnum)[keyof typeof UsuarioEmProjetoScalarFieldEnum]
+export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
 
 
 export const ProjetoScalarFieldEnum = {
@@ -101,16 +107,36 @@ export const ProjetoScalarFieldEnum = {
 export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
 
 
-export const TokenScalarFieldEnum = {
-  id: 'id',
-  token: 'token',
-  type: 'type',
-  revoked: 'revoked',
-  expiresAt: 'expiresAt',
+export const UsuarioEmProjetoScalarFieldEnum = {
+  projetoId: 'projetoId',
   usuarioId: 'usuarioId'
 } as const
 
-export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
+export type UsuarioEmProjetoScalarFieldEnum = (typeof UsuarioEmProjetoScalarFieldEnum)[keyof typeof UsuarioEmProjetoScalarFieldEnum]
+
+
+export const TarefaScalarFieldEnum = {
+  id: 'id',
+  projeto_id: 'projeto_id',
+  titulo_trf: 'titulo_trf',
+  descr: 'descr',
+  dono_id: 'dono_id',
+  resp_id: 'resp_id',
+  data_i: 'data_i',
+  data_f: 'data_f',
+  prioridade: 'prioridade',
+  status: 'status'
+} as const
+
+export type TarefaScalarFieldEnum = (typeof TarefaScalarFieldEnum)[keyof typeof TarefaScalarFieldEnum]
+
+
+export const UsuarioEmTarefaScalarFieldEnum = {
+  tarefaId: 'tarefaId',
+  usuarioId: 'usuarioId'
+} as const
+
+export type UsuarioEmTarefaScalarFieldEnum = (typeof UsuarioEmTarefaScalarFieldEnum)[keyof typeof UsuarioEmTarefaScalarFieldEnum]
 
 
 export const SortOrder = {

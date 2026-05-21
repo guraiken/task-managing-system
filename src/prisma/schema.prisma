@@ -23,37 +23,21 @@ model Usuario {
 
   usuarioEmProjetos UsuarioEmProjeto[]
 
+  tarefasComoDono        Tarefa[]          @relation("DonoTarefa")
+  tarefasComoResponsavel Tarefa[]          @relation("ResponsavelTarefa")
+  usuarioEmTarefas       UsuarioEmTarefa[]
+
   @@map("usuario")
 }
-
-model UsuarioEmProjeto {
-  projetoId Int
-  usuarioId Int
-  projeto   Projeto @relation(fields: [projetoId], references: [id])
-  usuario   Usuario @relation(fields: [usuarioId], references: [id])
-
-  @@id([projetoId, usuarioId])
-}
-
-model Projeto {
-  id                Int    @id @default(autoincrement())
-  nome              String
-  area_conhecimento String
-
-  membros UsuarioEmProjeto[]
-
-  @@map("projeto")
-}
-
 enum Role {
   USER
   ADMIN
 }
-
 enum TypeToken {
   ACCESS
   REFRESH
 }
+
 
 model Token {
   id        Int       @id @default(autoincrement())
@@ -66,4 +50,68 @@ model Token {
   usuario Usuario @relation(fields: [usuarioId], references: [id])
 
   @@map("token")
+}
+
+
+model Projeto {
+  id                Int    @id @default(autoincrement())
+  nome              String
+  area_conhecimento String
+
+  membros UsuarioEmProjeto[]
+  tarefas Tarefa[]
+
+  @@map("projeto")
+}
+
+
+model UsuarioEmProjeto {
+  projetoId Int
+  usuarioId Int
+  projeto   Projeto @relation(fields: [projetoId], references: [id])
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@id([projetoId, usuarioId])
+}
+
+
+model Tarefa {
+  id Int @id @default(autoincrement())
+
+  projeto_id Int
+  projeto    Projeto @relation(fields: [projeto_id], references: [id])
+
+  titulo_trf  String
+  descr       String
+  dono_id     Int
+  dono        Usuario           @relation("DonoTarefa", fields: [dono_id], references: [id])
+  resp_id     Int
+  responsavel Usuario           @relation("ResponsavelTarefa", fields: [resp_id], references: [id])
+  data_i      DateTime
+  data_f      DateTime
+  prioridade  Prioridade
+  status      Status
+  usuarios    UsuarioEmTarefa[]
+}
+enum Prioridade {
+  Baixa
+  Media
+  Alta
+}
+enum Status {
+  Pausada
+  Andamento
+  Concluida
+  Reaberta
+}
+
+
+model UsuarioEmTarefa {
+  tarefaId  Int
+  usuarioId Int
+
+  tarefa  Tarefa  @relation(fields: [tarefaId], references: [id])
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@id([tarefaId, usuarioId])
 }

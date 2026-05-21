@@ -201,6 +201,7 @@ export type ProjetoWhereInput = {
   nome?: Prisma.StringFilter<"Projeto"> | string
   area_conhecimento?: Prisma.StringFilter<"Projeto"> | string
   membros?: Prisma.UsuarioEmProjetoListRelationFilter
+  tarefas?: Prisma.TarefaListRelationFilter
 }
 
 export type ProjetoOrderByWithRelationInput = {
@@ -208,6 +209,7 @@ export type ProjetoOrderByWithRelationInput = {
   nome?: Prisma.SortOrder
   area_conhecimento?: Prisma.SortOrder
   membros?: Prisma.UsuarioEmProjetoOrderByRelationAggregateInput
+  tarefas?: Prisma.TarefaOrderByRelationAggregateInput
 }
 
 export type ProjetoWhereUniqueInput = Prisma.AtLeast<{
@@ -218,6 +220,7 @@ export type ProjetoWhereUniqueInput = Prisma.AtLeast<{
   nome?: Prisma.StringFilter<"Projeto"> | string
   area_conhecimento?: Prisma.StringFilter<"Projeto"> | string
   membros?: Prisma.UsuarioEmProjetoListRelationFilter
+  tarefas?: Prisma.TarefaListRelationFilter
 }, "id">
 
 export type ProjetoOrderByWithAggregationInput = {
@@ -244,6 +247,7 @@ export type ProjetoCreateInput = {
   nome: string
   area_conhecimento: string
   membros?: Prisma.UsuarioEmProjetoCreateNestedManyWithoutProjetoInput
+  tarefas?: Prisma.TarefaCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoUncheckedCreateInput = {
@@ -251,12 +255,14 @@ export type ProjetoUncheckedCreateInput = {
   nome: string
   area_conhecimento: string
   membros?: Prisma.UsuarioEmProjetoUncheckedCreateNestedManyWithoutProjetoInput
+  tarefas?: Prisma.TarefaUncheckedCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoUpdateInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
   membros?: Prisma.UsuarioEmProjetoUpdateManyWithoutProjetoNestedInput
+  tarefas?: Prisma.TarefaUpdateManyWithoutProjetoNestedInput
 }
 
 export type ProjetoUncheckedUpdateInput = {
@@ -264,6 +270,7 @@ export type ProjetoUncheckedUpdateInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
   membros?: Prisma.UsuarioEmProjetoUncheckedUpdateManyWithoutProjetoNestedInput
+  tarefas?: Prisma.TarefaUncheckedUpdateManyWithoutProjetoNestedInput
 }
 
 export type ProjetoCreateManyInput = {
@@ -281,11 +288,6 @@ export type ProjetoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type ProjetoScalarRelationFilter = {
-  is?: Prisma.ProjetoWhereInput
-  isNot?: Prisma.ProjetoWhereInput
 }
 
 export type ProjetoCountOrderByAggregateInput = {
@@ -314,6 +316,11 @@ export type ProjetoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type ProjetoScalarRelationFilter = {
+  is?: Prisma.ProjetoWhereInput
+  isNot?: Prisma.ProjetoWhereInput
+}
+
 export type ProjetoCreateNestedOneWithoutMembrosInput = {
   create?: Prisma.XOR<Prisma.ProjetoCreateWithoutMembrosInput, Prisma.ProjetoUncheckedCreateWithoutMembrosInput>
   connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutMembrosInput
@@ -328,15 +335,31 @@ export type ProjetoUpdateOneRequiredWithoutMembrosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProjetoUpdateToOneWithWhereWithoutMembrosInput, Prisma.ProjetoUpdateWithoutMembrosInput>, Prisma.ProjetoUncheckedUpdateWithoutMembrosInput>
 }
 
+export type ProjetoCreateNestedOneWithoutTarefasInput = {
+  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
+  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutTarefasInput
+  connect?: Prisma.ProjetoWhereUniqueInput
+}
+
+export type ProjetoUpdateOneRequiredWithoutTarefasNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
+  connectOrCreate?: Prisma.ProjetoCreateOrConnectWithoutTarefasInput
+  upsert?: Prisma.ProjetoUpsertWithoutTarefasInput
+  connect?: Prisma.ProjetoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjetoUpdateToOneWithWhereWithoutTarefasInput, Prisma.ProjetoUpdateWithoutTarefasInput>, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
+}
+
 export type ProjetoCreateWithoutMembrosInput = {
   nome: string
   area_conhecimento: string
+  tarefas?: Prisma.TarefaCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoUncheckedCreateWithoutMembrosInput = {
   id?: number
   nome: string
   area_conhecimento: string
+  tarefas?: Prisma.TarefaUncheckedCreateNestedManyWithoutProjetoInput
 }
 
 export type ProjetoCreateOrConnectWithoutMembrosInput = {
@@ -358,12 +381,56 @@ export type ProjetoUpdateToOneWithWhereWithoutMembrosInput = {
 export type ProjetoUpdateWithoutMembrosInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  tarefas?: Prisma.TarefaUpdateManyWithoutProjetoNestedInput
 }
 
 export type ProjetoUncheckedUpdateWithoutMembrosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  tarefas?: Prisma.TarefaUncheckedUpdateManyWithoutProjetoNestedInput
+}
+
+export type ProjetoCreateWithoutTarefasInput = {
+  nome: string
+  area_conhecimento: string
+  membros?: Prisma.UsuarioEmProjetoCreateNestedManyWithoutProjetoInput
+}
+
+export type ProjetoUncheckedCreateWithoutTarefasInput = {
+  id?: number
+  nome: string
+  area_conhecimento: string
+  membros?: Prisma.UsuarioEmProjetoUncheckedCreateNestedManyWithoutProjetoInput
+}
+
+export type ProjetoCreateOrConnectWithoutTarefasInput = {
+  where: Prisma.ProjetoWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
+}
+
+export type ProjetoUpsertWithoutTarefasInput = {
+  update: Prisma.XOR<Prisma.ProjetoUpdateWithoutTarefasInput, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
+  create: Prisma.XOR<Prisma.ProjetoCreateWithoutTarefasInput, Prisma.ProjetoUncheckedCreateWithoutTarefasInput>
+  where?: Prisma.ProjetoWhereInput
+}
+
+export type ProjetoUpdateToOneWithWhereWithoutTarefasInput = {
+  where?: Prisma.ProjetoWhereInput
+  data: Prisma.XOR<Prisma.ProjetoUpdateWithoutTarefasInput, Prisma.ProjetoUncheckedUpdateWithoutTarefasInput>
+}
+
+export type ProjetoUpdateWithoutTarefasInput = {
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  membros?: Prisma.UsuarioEmProjetoUpdateManyWithoutProjetoNestedInput
+}
+
+export type ProjetoUncheckedUpdateWithoutTarefasInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  area_conhecimento?: Prisma.StringFieldUpdateOperationsInput | string
+  membros?: Prisma.UsuarioEmProjetoUncheckedUpdateManyWithoutProjetoNestedInput
 }
 
 
@@ -373,10 +440,12 @@ export type ProjetoUncheckedUpdateWithoutMembrosInput = {
 
 export type ProjetoCountOutputType = {
   membros: number
+  tarefas: number
 }
 
 export type ProjetoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   membros?: boolean | ProjetoCountOutputTypeCountMembrosArgs
+  tarefas?: boolean | ProjetoCountOutputTypeCountTarefasArgs
 }
 
 /**
@@ -396,12 +465,20 @@ export type ProjetoCountOutputTypeCountMembrosArgs<ExtArgs extends runtime.Types
   where?: Prisma.UsuarioEmProjetoWhereInput
 }
 
+/**
+ * ProjetoCountOutputType without action
+ */
+export type ProjetoCountOutputTypeCountTarefasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TarefaWhereInput
+}
+
 
 export type ProjetoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
   area_conhecimento?: boolean
   membros?: boolean | Prisma.Projeto$membrosArgs<ExtArgs>
+  tarefas?: boolean | Prisma.Projeto$tarefasArgs<ExtArgs>
   _count?: boolean | Prisma.ProjetoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["projeto"]>
 
@@ -426,6 +503,7 @@ export type ProjetoSelectScalar = {
 export type ProjetoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "area_conhecimento", ExtArgs["result"]["projeto"]>
 export type ProjetoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   membros?: boolean | Prisma.Projeto$membrosArgs<ExtArgs>
+  tarefas?: boolean | Prisma.Projeto$tarefasArgs<ExtArgs>
   _count?: boolean | Prisma.ProjetoCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjetoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -435,6 +513,7 @@ export type $ProjetoPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Projeto"
   objects: {
     membros: Prisma.$UsuarioEmProjetoPayload<ExtArgs>[]
+    tarefas: Prisma.$TarefaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -835,6 +914,7 @@ readonly fields: ProjetoFieldRefs;
 export interface Prisma__ProjetoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   membros<T extends Prisma.Projeto$membrosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Projeto$membrosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioEmProjetoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tarefas<T extends Prisma.Projeto$tarefasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Projeto$tarefasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TarefaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1281,6 +1361,30 @@ export type Projeto$membrosArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.UsuarioEmProjetoScalarFieldEnum | Prisma.UsuarioEmProjetoScalarFieldEnum[]
+}
+
+/**
+ * Projeto.tarefas
+ */
+export type Projeto$tarefasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tarefa
+   */
+  select?: Prisma.TarefaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tarefa
+   */
+  omit?: Prisma.TarefaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TarefaInclude<ExtArgs> | null
+  where?: Prisma.TarefaWhereInput
+  orderBy?: Prisma.TarefaOrderByWithRelationInput | Prisma.TarefaOrderByWithRelationInput[]
+  cursor?: Prisma.TarefaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TarefaScalarFieldEnum | Prisma.TarefaScalarFieldEnum[]
 }
 
 /**
