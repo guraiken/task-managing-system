@@ -48,7 +48,6 @@ export type TarefaMinAggregateOutputType = {
   dono_id: number | null
   resp_id: number | null
   data_i: Date | null
-  data_v: Date | null
   data_f: Date | null
   prioridade: $Enums.Prioridade | null
   status: $Enums.Status | null
@@ -62,7 +61,6 @@ export type TarefaMaxAggregateOutputType = {
   dono_id: number | null
   resp_id: number | null
   data_i: Date | null
-  data_v: Date | null
   data_f: Date | null
   prioridade: $Enums.Prioridade | null
   status: $Enums.Status | null
@@ -76,7 +74,6 @@ export type TarefaCountAggregateOutputType = {
   dono_id: number
   resp_id: number
   data_i: number
-  data_v: number
   data_f: number
   prioridade: number
   status: number
@@ -106,7 +103,6 @@ export type TarefaMinAggregateInputType = {
   dono_id?: true
   resp_id?: true
   data_i?: true
-  data_v?: true
   data_f?: true
   prioridade?: true
   status?: true
@@ -120,7 +116,6 @@ export type TarefaMaxAggregateInputType = {
   dono_id?: true
   resp_id?: true
   data_i?: true
-  data_v?: true
   data_f?: true
   prioridade?: true
   status?: true
@@ -134,7 +129,6 @@ export type TarefaCountAggregateInputType = {
   dono_id?: true
   resp_id?: true
   data_i?: true
-  data_v?: true
   data_f?: true
   prioridade?: true
   status?: true
@@ -235,7 +229,6 @@ export type TarefaGroupByOutputType = {
   dono_id: number
   resp_id: number
   data_i: Date
-  data_v: Date
   data_f: Date
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -272,7 +265,6 @@ export type TarefaWhereInput = {
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
-  data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   prioridade?: Prisma.EnumPrioridadeFilter<"Tarefa"> | $Enums.Prioridade
   status?: Prisma.EnumStatusFilter<"Tarefa"> | $Enums.Status
@@ -290,7 +282,6 @@ export type TarefaOrderByWithRelationInput = {
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
-  data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
   prioridade?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -311,7 +302,6 @@ export type TarefaWhereUniqueInput = Prisma.AtLeast<{
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
-  data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   prioridade?: Prisma.EnumPrioridadeFilter<"Tarefa"> | $Enums.Prioridade
   status?: Prisma.EnumStatusFilter<"Tarefa"> | $Enums.Status
@@ -329,7 +319,6 @@ export type TarefaOrderByWithAggregationInput = {
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
-  data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
   prioridade?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -351,7 +340,6 @@ export type TarefaScalarWhereWithAggregatesInput = {
   dono_id?: Prisma.IntWithAggregatesFilter<"Tarefa"> | number
   resp_id?: Prisma.IntWithAggregatesFilter<"Tarefa"> | number
   data_i?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
-  data_v?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
   prioridade?: Prisma.EnumPrioridadeWithAggregatesFilter<"Tarefa"> | $Enums.Prioridade
   status?: Prisma.EnumStatusWithAggregatesFilter<"Tarefa"> | $Enums.Status
@@ -361,13 +349,12 @@ export type TarefaCreateInput = {
   titulo_trf: string
   descr: string
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
   projeto: Prisma.ProjetoCreateNestedOneWithoutTarefasInput
-  dono: Prisma.UsuarioCreateNestedOneWithoutTarefas_donoInput
-  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefas_respInput
+  dono: Prisma.UsuarioCreateNestedOneWithoutTarefasComoDonoInput
+  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefasComoResponsavelInput
   usuarios?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutTarefaInput
 }
 
@@ -379,7 +366,6 @@ export type TarefaUncheckedCreateInput = {
   dono_id: number
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -390,13 +376,12 @@ export type TarefaUpdateInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   projeto?: Prisma.ProjetoUpdateOneRequiredWithoutTarefasNestedInput
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_donoNestedInput
-  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_respNestedInput
+  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoDonoNestedInput
+  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoResponsavelNestedInput
   usuarios?: Prisma.UsuarioEmTarefaUpdateManyWithoutTarefaNestedInput
 }
 
@@ -408,7 +393,6 @@ export type TarefaUncheckedUpdateInput = {
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -423,7 +407,6 @@ export type TarefaCreateManyInput = {
   dono_id: number
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -433,7 +416,6 @@ export type TarefaUpdateManyMutationInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -447,7 +429,6 @@ export type TarefaUncheckedUpdateManyInput = {
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -471,7 +452,6 @@ export type TarefaCountOrderByAggregateInput = {
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
-  data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
   prioridade?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -492,7 +472,6 @@ export type TarefaMaxOrderByAggregateInput = {
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
-  data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
   prioridade?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -506,7 +485,6 @@ export type TarefaMinOrderByAggregateInput = {
   dono_id?: Prisma.SortOrder
   resp_id?: Prisma.SortOrder
   data_i?: Prisma.SortOrder
-  data_v?: Prisma.SortOrder
   data_f?: Prisma.SortOrder
   prioridade?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -680,12 +658,11 @@ export type TarefaCreateWithoutDonoInput = {
   titulo_trf: string
   descr: string
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
   projeto: Prisma.ProjetoCreateNestedOneWithoutTarefasInput
-  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefas_respInput
+  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefasComoResponsavelInput
   usuarios?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutTarefaInput
 }
 
@@ -696,7 +673,6 @@ export type TarefaUncheckedCreateWithoutDonoInput = {
   descr: string
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -717,12 +693,11 @@ export type TarefaCreateWithoutResponsavelInput = {
   titulo_trf: string
   descr: string
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
   projeto: Prisma.ProjetoCreateNestedOneWithoutTarefasInput
-  dono: Prisma.UsuarioCreateNestedOneWithoutTarefas_donoInput
+  dono: Prisma.UsuarioCreateNestedOneWithoutTarefasComoDonoInput
   usuarios?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutTarefaInput
 }
 
@@ -733,7 +708,6 @@ export type TarefaUncheckedCreateWithoutResponsavelInput = {
   descr: string
   dono_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -777,7 +751,6 @@ export type TarefaScalarWhereInput = {
   dono_id?: Prisma.IntFilter<"Tarefa"> | number
   resp_id?: Prisma.IntFilter<"Tarefa"> | number
   data_i?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
-  data_v?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   data_f?: Prisma.DateTimeFilter<"Tarefa"> | Date | string
   prioridade?: Prisma.EnumPrioridadeFilter<"Tarefa"> | $Enums.Prioridade
   status?: Prisma.EnumStatusFilter<"Tarefa"> | $Enums.Status
@@ -803,12 +776,11 @@ export type TarefaCreateWithoutProjetoInput = {
   titulo_trf: string
   descr: string
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
-  dono: Prisma.UsuarioCreateNestedOneWithoutTarefas_donoInput
-  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefas_respInput
+  dono: Prisma.UsuarioCreateNestedOneWithoutTarefasComoDonoInput
+  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefasComoResponsavelInput
   usuarios?: Prisma.UsuarioEmTarefaCreateNestedManyWithoutTarefaInput
 }
 
@@ -819,7 +791,6 @@ export type TarefaUncheckedCreateWithoutProjetoInput = {
   dono_id: number
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -856,13 +827,12 @@ export type TarefaCreateWithoutUsuariosInput = {
   titulo_trf: string
   descr: string
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
   projeto: Prisma.ProjetoCreateNestedOneWithoutTarefasInput
-  dono: Prisma.UsuarioCreateNestedOneWithoutTarefas_donoInput
-  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefas_respInput
+  dono: Prisma.UsuarioCreateNestedOneWithoutTarefasComoDonoInput
+  responsavel: Prisma.UsuarioCreateNestedOneWithoutTarefasComoResponsavelInput
 }
 
 export type TarefaUncheckedCreateWithoutUsuariosInput = {
@@ -873,7 +843,6 @@ export type TarefaUncheckedCreateWithoutUsuariosInput = {
   dono_id: number
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -899,13 +868,12 @@ export type TarefaUpdateWithoutUsuariosInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   projeto?: Prisma.ProjetoUpdateOneRequiredWithoutTarefasNestedInput
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_donoNestedInput
-  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_respNestedInput
+  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoDonoNestedInput
+  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoResponsavelNestedInput
 }
 
 export type TarefaUncheckedUpdateWithoutUsuariosInput = {
@@ -916,7 +884,6 @@ export type TarefaUncheckedUpdateWithoutUsuariosInput = {
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -929,7 +896,6 @@ export type TarefaCreateManyDonoInput = {
   descr: string
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -942,7 +908,6 @@ export type TarefaCreateManyResponsavelInput = {
   descr: string
   dono_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -952,12 +917,11 @@ export type TarefaUpdateWithoutDonoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   projeto?: Prisma.ProjetoUpdateOneRequiredWithoutTarefasNestedInput
-  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_respNestedInput
+  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoResponsavelNestedInput
   usuarios?: Prisma.UsuarioEmTarefaUpdateManyWithoutTarefaNestedInput
 }
 
@@ -968,7 +932,6 @@ export type TarefaUncheckedUpdateWithoutDonoInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -982,7 +945,6 @@ export type TarefaUncheckedUpdateManyWithoutDonoInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -992,12 +954,11 @@ export type TarefaUpdateWithoutResponsavelInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   projeto?: Prisma.ProjetoUpdateOneRequiredWithoutTarefasNestedInput
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_donoNestedInput
+  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoDonoNestedInput
   usuarios?: Prisma.UsuarioEmTarefaUpdateManyWithoutTarefaNestedInput
 }
 
@@ -1008,7 +969,6 @@ export type TarefaUncheckedUpdateWithoutResponsavelInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -1022,7 +982,6 @@ export type TarefaUncheckedUpdateManyWithoutResponsavelInput = {
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -1035,7 +994,6 @@ export type TarefaCreateManyProjetoInput = {
   dono_id: number
   resp_id: number
   data_i: Date | string
-  data_v: Date | string
   data_f: Date | string
   prioridade: $Enums.Prioridade
   status: $Enums.Status
@@ -1045,12 +1003,11 @@ export type TarefaUpdateWithoutProjetoInput = {
   titulo_trf?: Prisma.StringFieldUpdateOperationsInput | string
   descr?: Prisma.StringFieldUpdateOperationsInput | string
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_donoNestedInput
-  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefas_respNestedInput
+  dono?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoDonoNestedInput
+  responsavel?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasComoResponsavelNestedInput
   usuarios?: Prisma.UsuarioEmTarefaUpdateManyWithoutTarefaNestedInput
 }
 
@@ -1061,7 +1018,6 @@ export type TarefaUncheckedUpdateWithoutProjetoInput = {
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -1075,7 +1031,6 @@ export type TarefaUncheckedUpdateManyWithoutProjetoInput = {
   dono_id?: Prisma.IntFieldUpdateOperationsInput | number
   resp_id?: Prisma.IntFieldUpdateOperationsInput | number
   data_i?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  data_v?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   data_f?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridade?: Prisma.EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
@@ -1120,7 +1075,6 @@ export type TarefaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   dono_id?: boolean
   resp_id?: boolean
   data_i?: boolean
-  data_v?: boolean
   data_f?: boolean
   prioridade?: boolean
   status?: boolean
@@ -1139,7 +1093,6 @@ export type TarefaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   dono_id?: boolean
   resp_id?: boolean
   data_i?: boolean
-  data_v?: boolean
   data_f?: boolean
   prioridade?: boolean
   status?: boolean
@@ -1156,7 +1109,6 @@ export type TarefaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   dono_id?: boolean
   resp_id?: boolean
   data_i?: boolean
-  data_v?: boolean
   data_f?: boolean
   prioridade?: boolean
   status?: boolean
@@ -1173,13 +1125,12 @@ export type TarefaSelectScalar = {
   dono_id?: boolean
   resp_id?: boolean
   data_i?: boolean
-  data_v?: boolean
   data_f?: boolean
   prioridade?: boolean
   status?: boolean
 }
 
-export type TarefaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projeto_id" | "titulo_trf" | "descr" | "dono_id" | "resp_id" | "data_i" | "data_v" | "data_f" | "prioridade" | "status", ExtArgs["result"]["tarefa"]>
+export type TarefaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projeto_id" | "titulo_trf" | "descr" | "dono_id" | "resp_id" | "data_i" | "data_f" | "prioridade" | "status", ExtArgs["result"]["tarefa"]>
 export type TarefaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projeto?: boolean | Prisma.ProjetoDefaultArgs<ExtArgs>
   dono?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
@@ -1214,7 +1165,6 @@ export type $TarefaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     dono_id: number
     resp_id: number
     data_i: Date
-    data_v: Date
     data_f: Date
     prioridade: $Enums.Prioridade
     status: $Enums.Status
@@ -1652,7 +1602,6 @@ export interface TarefaFieldRefs {
   readonly dono_id: Prisma.FieldRef<"Tarefa", 'Int'>
   readonly resp_id: Prisma.FieldRef<"Tarefa", 'Int'>
   readonly data_i: Prisma.FieldRef<"Tarefa", 'DateTime'>
-  readonly data_v: Prisma.FieldRef<"Tarefa", 'DateTime'>
   readonly data_f: Prisma.FieldRef<"Tarefa", 'DateTime'>
   readonly prioridade: Prisma.FieldRef<"Tarefa", 'Prioridade'>
   readonly status: Prisma.FieldRef<"Tarefa", 'Status'>

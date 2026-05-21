@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Usuario: 'Usuario',
+  UsuarioEmProjeto: 'UsuarioEmProjeto',
   Projeto: 'Projeto',
   Tarefa: 'Tarefa',
   UsuarioEmTarefa: 'UsuarioEmTarefa',
@@ -76,18 +77,27 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UsuarioScalarFieldEnum = {
   id: 'id',
-  nome: 'nome'
+  email: 'email',
+  nome: 'nome',
+  senha: 'senha',
+  role: 'role'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
+export const UsuarioEmProjetoScalarFieldEnum = {
+  projetoId: 'projetoId',
+  usuarioId: 'usuarioId'
+} as const
+
+export type UsuarioEmProjetoScalarFieldEnum = (typeof UsuarioEmProjetoScalarFieldEnum)[keyof typeof UsuarioEmProjetoScalarFieldEnum]
+
+
 export const ProjetoScalarFieldEnum = {
   id: 'id',
-  dono_id: 'dono_id',
-  titulo_prjt: 'titulo_prjt',
-  area: 'area',
-  descr: 'descr'
+  nome: 'nome',
+  area_conhecimento: 'area_conhecimento'
 } as const
 
 export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
@@ -101,7 +111,6 @@ export const TarefaScalarFieldEnum = {
   dono_id: 'dono_id',
   resp_id: 'resp_id',
   data_i: 'data_i',
-  data_v: 'data_v',
   data_f: 'data_f',
   prioridade: 'prioridade',
   status: 'status'

@@ -1,5 +1,5 @@
 import type { Request, Response } from "express"
-import { criarTarefaService } from "../Service/tarefas.service"
+import { ErroValidacaoTarefa, criarTarefaService } from "../Service/tarefas.service"
 
 
 export async function criarTarefa(request: Request, response: Response) {
@@ -8,7 +8,7 @@ export async function criarTarefa(request: Request, response: Response) {
 
     return response.status(201).json(tarefa)
   } catch (error) {
-    if (error instanceof Error) {
+    if (error instanceof ErroValidacaoTarefa) {
       return response.status(400).json({ message: error.message })
     }
 

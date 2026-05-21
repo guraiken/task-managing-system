@@ -238,7 +238,7 @@ export type UsuarioEmTarefaScalarWhereWithAggregatesInput = {
 
 export type UsuarioEmTarefaCreateInput = {
   tarefa: Prisma.TarefaCreateNestedOneWithoutUsuariosInput
-  usuario: Prisma.UsuarioCreateNestedOneWithoutTarefasInput
+  usuario: Prisma.UsuarioCreateNestedOneWithoutUsuarioEmTarefasInput
 }
 
 export type UsuarioEmTarefaUncheckedCreateInput = {
@@ -248,7 +248,7 @@ export type UsuarioEmTarefaUncheckedCreateInput = {
 
 export type UsuarioEmTarefaUpdateInput = {
   tarefa?: Prisma.TarefaUpdateOneRequiredWithoutUsuariosNestedInput
-  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasNestedInput
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutUsuarioEmTarefasNestedInput
 }
 
 export type UsuarioEmTarefaUncheckedUpdateInput = {
@@ -437,7 +437,7 @@ export type UsuarioEmTarefaScalarWhereInput = {
 }
 
 export type UsuarioEmTarefaCreateWithoutTarefaInput = {
-  usuario: Prisma.UsuarioCreateNestedOneWithoutTarefasInput
+  usuario: Prisma.UsuarioCreateNestedOneWithoutUsuarioEmTarefasInput
 }
 
 export type UsuarioEmTarefaUncheckedCreateWithoutTarefaInput = {
@@ -491,7 +491,7 @@ export type UsuarioEmTarefaCreateManyTarefaInput = {
 }
 
 export type UsuarioEmTarefaUpdateWithoutTarefaInput = {
-  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutTarefasNestedInput
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutUsuarioEmTarefasNestedInput
 }
 
 export type UsuarioEmTarefaUncheckedUpdateWithoutTarefaInput = {

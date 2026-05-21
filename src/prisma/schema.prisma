@@ -41,6 +41,7 @@ model Projeto {
   area_conhecimento String
 
   membros UsuarioEmProjeto[]
+  tarefas Tarefa[]
 
   @@map("projeto")
 }

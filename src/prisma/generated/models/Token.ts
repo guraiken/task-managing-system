@@ -436,10 +436,6 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type TokenCreateWithoutUsuarioInput = {
   token: string
   type?: $Enums.TypeToken

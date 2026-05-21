@@ -3,7 +3,8 @@ import { prisma } from "../../prisma/prisma"
 type CriarTarefaDados = {
   titulo: string
   descricao?: string
-  data_vencimento: Date
+  data_i: Date
+  data_f: Date
   prioridade: "Baixa" | "Media" | "Alta"
   projetoId: number
   donoId: number
@@ -42,9 +43,8 @@ export function criarTarefa(dados: CriarTarefaDados) {
     data: {
       titulo_trf: dados.titulo,
       descr: dados.descricao ?? "Pendente",
-      data_i: new Date(),
-      data_v: dados.data_vencimento,
-      data_f: dados.data_vencimento,
+      data_i: dados.data_i,
+      data_f: dados.data_f,
       prioridade: dados.prioridade,
       status: "Andamento",
       projeto: {

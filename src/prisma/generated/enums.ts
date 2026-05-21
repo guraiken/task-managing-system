@@ -9,6 +9,25 @@
 * 🟢 You can import this file directly.
 */
 
+export const Prioridade = {
+  Baixa: 'Baixa',
+  Media: 'Media',
+  Alta: 'Alta'
+} as const
+
+export type Prioridade = (typeof Prioridade)[keyof typeof Prioridade]
+
+
+export const Status = {
+  Pausada: 'Pausada',
+  Andamento: 'Andamento',
+  Concluida: 'Concluida',
+  Reaberta: 'Reaberta'
+} as const
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'

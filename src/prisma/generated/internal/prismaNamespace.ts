@@ -385,6 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Usuario: 'Usuario',
+  UsuarioEmProjeto: 'UsuarioEmProjeto',
   Projeto: 'Projeto',
   Tarefa: 'Tarefa',
   UsuarioEmTarefa: 'UsuarioEmTarefa',
@@ -404,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "projeto" | "tarefa" | "usuarioEmTarefa" | "token"
+    modelProps: "usuario" | "usuarioEmProjeto" | "projeto" | "tarefa" | "usuarioEmTarefa" | "token"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -479,6 +480,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UsuarioCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UsuarioCountAggregateOutputType> | number
+        }
+      }
+    }
+    UsuarioEmProjeto: {
+      payload: Prisma.$UsuarioEmProjetoPayload<ExtArgs>
+      fields: Prisma.UsuarioEmProjetoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UsuarioEmProjetoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UsuarioEmProjetoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        findFirst: {
+          args: Prisma.UsuarioEmProjetoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UsuarioEmProjetoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        findMany: {
+          args: Prisma.UsuarioEmProjetoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>[]
+        }
+        create: {
+          args: Prisma.UsuarioEmProjetoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        createMany: {
+          args: Prisma.UsuarioEmProjetoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UsuarioEmProjetoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>[]
+        }
+        delete: {
+          args: Prisma.UsuarioEmProjetoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        update: {
+          args: Prisma.UsuarioEmProjetoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        deleteMany: {
+          args: Prisma.UsuarioEmProjetoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UsuarioEmProjetoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UsuarioEmProjetoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>[]
+        }
+        upsert: {
+          args: Prisma.UsuarioEmProjetoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsuarioEmProjetoPayload>
+        }
+        aggregate: {
+          args: Prisma.UsuarioEmProjetoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUsuarioEmProjeto>
+        }
+        groupBy: {
+          args: Prisma.UsuarioEmProjetoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsuarioEmProjetoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UsuarioEmProjetoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsuarioEmProjetoCountAggregateOutputType> | number
         }
       }
     }
@@ -819,18 +894,27 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UsuarioScalarFieldEnum = {
   id: 'id',
-  nome: 'nome'
+  email: 'email',
+  nome: 'nome',
+  senha: 'senha',
+  role: 'role'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
+export const UsuarioEmProjetoScalarFieldEnum = {
+  projetoId: 'projetoId',
+  usuarioId: 'usuarioId'
+} as const
+
+export type UsuarioEmProjetoScalarFieldEnum = (typeof UsuarioEmProjetoScalarFieldEnum)[keyof typeof UsuarioEmProjetoScalarFieldEnum]
+
+
 export const ProjetoScalarFieldEnum = {
   id: 'id',
-  dono_id: 'dono_id',
-  titulo_prjt: 'titulo_prjt',
-  area: 'area',
-  descr: 'descr'
+  nome: 'nome',
+  area_conhecimento: 'area_conhecimento'
 } as const
 
 export type ProjetoScalarFieldEnum = (typeof ProjetoScalarFieldEnum)[keyof typeof ProjetoScalarFieldEnum]
@@ -844,7 +928,6 @@ export const TarefaScalarFieldEnum = {
   dono_id: 'dono_id',
   resp_id: 'resp_id',
   data_i: 'data_i',
-  data_v: 'data_v',
   data_f: 'data_f',
   prioridade: 'prioridade',
   status: 'status'
@@ -920,6 +1003,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Role'
+ */
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+/**
+ * Reference to a field of type 'Role[]'
+ */
+export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
     
 
 
@@ -1110,6 +1207,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   usuario?: Prisma.UsuarioOmit
+  usuarioEmProjeto?: Prisma.UsuarioEmProjetoOmit
   projeto?: Prisma.ProjetoOmit
   tarefa?: Prisma.TarefaOmit
   usuarioEmTarefa?: Prisma.UsuarioEmTarefaOmit

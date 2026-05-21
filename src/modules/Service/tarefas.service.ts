@@ -1,10 +1,17 @@
 import { buscarProjeto, buscarUsuario, criarTarefa  } from "../Repository/tarefas.repository"
 
 
+export class ErroValidacaoTarefa extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = "ErroValidacaoTarefa"
+  }
+}
+
 type CriarTarefaDados = {
   titulo?: string
   descricao?: string
-  data_vencimento?: string
+  data_f?: string
   prioridade: "Baixa" | "Media" | "Alta"
   projetoId?: number
   donoId: number
@@ -15,51 +22,65 @@ type CriarTarefaDados = {
 
 export async function criarTarefaService(dados: CriarTarefaDados) {
   if (!dados.titulo?.trim()) {
-    throw new Error("Titulo da tarefa e obrigatorio")
+    throw new ErroValidacaoTarefa("Titulo da tarefa e obrigatorio")
   }
 
-  if (!dados.data_vencimento) {
-    throw new Error("Data de vencimento da tarefa e obrigatoria")
+  if (!dados.data_f) {
+    throw new ErroValidacaoTarefa("Data final da tarefa e obrigatoria")
+  }
+
+  const dataFinal = new Date(dados.data_f)
+
+  if (Number.isNaN(dataFinal.getTime())) {
+    throw new ErroValidacaoTarefa("Data final invalida")
+  }
+
+  const dataInicial = new Date()
+  const diaFinal = new Date(dataFinal.getFullYear(), dataFinal.getMonth(), dataFinal.getDate())
+  const diaInicial = new Date(dataInicial.getFullYear(), dataInicial.getMonth(), dataInicial.getDate())
+
+  if (diaFinal < diaInicial) {
+    throw new ErroValidacaoTarefa("Data final nao pode ser anterior a data inicial")
+  }
+
+  const prioridadesValidas = ["Baixa", "Media", "Alta"]
+
+  if (!prioridadesValidas.includes(dados.prioridade)) {
+    throw new ErroValidacaoTarefa("Prioridade invalida")
   }
 
   const projetoId = dados.projetoId
 
-  if (!projetoId || projetoId <= 0) {
-    throw new Error("Projeto da tarefa e obrigatorio")
+  if (typeof projetoId !== "number" || !Number.isInteger(projetoId) || projetoId <= 0) {
+    throw new ErroValidacaoTarefa("Projeto da tarefa e obrigatorio")
   }
 
   const donoId = dados.donoId
 
-  if (!donoId || donoId <= 0) {
-    throw new Error("Dono da tarefa e obrigatorio")
+  if (!Number.isInteger(donoId) || donoId <= 0) {
+    throw new ErroValidacaoTarefa("Dono da tarefa e obrigatorio")
   }
 
   const responsavelId = dados.responsavelId
 
-  if (!responsavelId || responsavelId <= 0) {
-    throw new Error("Responsavel da tarefa e obrigatorio")
+  if (!Number.isInteger(responsavelId) || responsavelId <= 0) {
+    throw new ErroValidacaoTarefa("Responsavel da tarefa e obrigatorio")
   }
 
   if (!Array.isArray(dados.usuarioIds) || dados.usuarioIds.length === 0) {
-    throw new Error("Informe pelo menos um usuario vinculado a tarefa")
+    throw new ErroValidacaoTarefa("Informe pelo menos um usuario vinculado a tarefa")
   }
 
   const usuarioIds = Array.from(new Set(dados.usuarioIds))
 
-  if (!usuarioIds.every((usuarioId) => usuarioId > 0)) {
-    throw new Error("Ids dos usuarios vinculados devem ser validos")
-  }
-
-  const dataVencimento = new Date(dados.data_vencimento)
-
-  if (Number.isNaN(dataVencimento.getTime())) {
-    throw new Error("Data de vencimento invalida")
+  if (!usuarioIds.every((usuarioId) => Number.isInteger(usuarioId) && usuarioId > 0)) {
+    throw new ErroValidacaoTarefa("Ids dos usuarios vinculados devem ser validos")
   }
 
   const projeto = await buscarProjeto(projetoId)
 
   if (!projeto) {
-    throw new Error("Projeto informado nao existe")
+    throw new ErroValidacaoTarefa("Projeto informado nao existe")
   }
 
   const usuariosParaValidar = Array.from(new Set([donoId, responsavelId, ...usuarioIds]))
@@ -69,18 +90,21 @@ export async function criarTarefaService(dados: CriarTarefaDados) {
     const usuariosEncontrados = usuarios.map((usuario) => usuario.id)
     const usuariosNaoEncontrados = usuariosParaValidar.filter((usuarioId) => !usuariosEncontrados.includes(usuarioId))
 
-    throw new Error(`Usuarios nao encontrados: ${usuariosNaoEncontrados.join(", ")}`)
+    throw new ErroValidacaoTarefa(`Usuarios nao encontrados: ${usuariosNaoEncontrados.join(", ")}`)
   }
+
+  const descricao = dados.descricao?.trim()
 
   const dadosTarefa = {
     titulo: dados.titulo.trim(),
-    data_vencimento: dataVencimento,
+    data_i: dataInicial,
+    data_f: dataFinal,
     prioridade: dados.prioridade,
     projetoId,
     donoId,
     responsavelId,
     usuarioIds,
-    ...(dados.descricao ? { descricao: dados.descricao } : {}),
+    ...(descricao ? { descricao } : {}),
   }
 
   return criarTarefa(dadosTarefa)
