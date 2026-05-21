@@ -1,4 +1,4 @@
-import { buscarProjeto, buscarUsuario, criarTarefa  } from "../repositories/tarefas.repository"
+import { buscarProjeto, buscarUsuario, criarTarefa  } from "../repositories/tarefasRepository"
 
 
 export class ErroValidacaoTarefa extends Error {

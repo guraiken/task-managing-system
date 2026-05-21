@@ -1,5 +1,7 @@
 import type { Request, Response } from "express"
-import { ErroValidacaoTarefa, criarTarefaService } from "../services/tarefas.service"
+import { criarTarefaService, ErroValidacaoTarefa } from "../services/tarefasService"
+
+
 
 
 export async function criarTarefa(request: Request, response: Response) {
