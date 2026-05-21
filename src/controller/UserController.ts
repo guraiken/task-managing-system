@@ -1,34 +1,36 @@
 import type { Request, Response } from "express"
 import { userService, type UserService } from "../services/UserService"
 
-export class UserController{
-    constructor(private readonly service: UserService){}
+export class UserController {
+    constructor(private readonly service: UserService) { }
 
     async listar(req: Request, res: Response) {
         try {
-            const usuarios = await this.service.listar()
+            const userToken = req.headers.authorization || ""
+ 
+            const usuarios = await this.service.listar(userToken)
 
             return res.status(200).json(usuarios)
         } catch (error: any) {
             res.status(404).json({
                 error,
-                message: error?.message 
+                message: error?.message
 
             })
         }
     }
 
-    async buscarPorId(req: Request, res: Response){
+    async buscarPorId(req: Request, res: Response) {
         try {
+            const userToken = req.headers.authorization || ""
             const dadosUsuario = Number(req.params.id)
-            const usuarioBuscado = await this.service.buscarPorId(dadosUsuario)
+            const usuarioBuscado = await this.service.buscarPorId(dadosUsuario, userToken)
 
             return res.status(201).json({
                 data: usuarioBuscado,
-                message: "Usuário criado com sucesso!"
+                message: "Usuário encontrado com sucesso!"
             })
-        } catch (error: any)
-         {
+        } catch (error: any) {
             res.status(404).json({
                 error,
                 message: error?.message
@@ -40,8 +42,9 @@ export class UserController{
         try {
             const dadosAtualizados = req.body
             const idUsuario = Number(req.params.id)
+            const userToken = req.headers.authorization || ""
 
-            const usuarioEditado = await this.service.editar(dadosAtualizados, idUsuario)
+            const usuarioEditado = await this.service.editar(dadosAtualizados, idUsuario, userToken)
 
             res.status(200).json(usuarioEditado)
 
@@ -53,11 +56,12 @@ export class UserController{
         }
     }
 
-    async deletar(req: Request, res: Response){
+    async deletar(req: Request, res: Response) {
         try {
             const idUsuario = Number(req.params.id)
+            const userToken = req.headers.authorization || ""
 
-            const usuarioDeletado = await this.service.deletar(idUsuario)
+            const usuarioDeletado = await this.service.deletar(idUsuario, userToken)
 
             return res.status(200).json(usuarioDeletado)
         } catch (error: any) {

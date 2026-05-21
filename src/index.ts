@@ -4,7 +4,7 @@ import cors from "cors"
 import { projetoRoutes } from './routes/projetoRoutes';
 import { auth } from './middleware/auth';
 import { authRouter } from './routes/auth';
-import { userRouter } from './routes/service'
+import { userRouter } from './routes/users'
 
 const app = express();
 const port = 3000;
