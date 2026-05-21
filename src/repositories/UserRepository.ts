@@ -16,17 +16,19 @@ export class UserRepository{
         }) 
     }
 
-    async editar(dadosUsuario: Usuario){
+    async editar(dadosUsuario: Usuario, id: number){
         const usuarioEditado = await this.prisma.usuario.update({
             data: dadosUsuario,
-            where: {id: dadosUsuario.id}
+            where: {id}
         })
+        return usuarioEditado
     }
 
     async deletar(id: number){
         const usuarioDeletado = await this.prisma.usuario.delete({
             where: {id}
         })
+        return usuarioDeletado
     }
 }
 

@@ -34,11 +34,13 @@ export class AuthService {
 
         if(existeUsuario && credenciaisValidas){
             const tokenAcesso = signTokenAcesso({
+                id: existeUsuario.id,
                 email: existeUsuario.email,
                 senha: existeUsuario.senha,
                 role: existeUsuario.role
             })
             const tokenRefresh = signTokenRefresh({
+                id: existeUsuario.id,
                 email: existeUsuario.email,
                 senha: existeUsuario.senha,
                 role: existeUsuario.role
