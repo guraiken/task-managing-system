@@ -13,30 +13,39 @@ datasource db {
 }
 
 model Usuario {
-  id Int @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  nome  String
+  senha String
+  role  Role   @default(USER)
 
-  nome         String
+  tokens Token[]
 
-  tarefas_dono Tarefa[]  @relation("DonoTarefa")
-  tarefas_resp Tarefa[]  @relation("ResponsavelTarefa")
-  tarefas      UsuarioEmTarefa[]
-  projetos     Projeto[]
-  tokens       Token[]
+  usuarioEmProjetos UsuarioEmProjeto[]
+
+  @@map("usuario")
 }
 
+model UsuarioEmProjeto {
+  projetoId Int
+  usuarioId Int
+  projeto   Projeto @relation(fields: [projetoId], references: [id])
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@id([projetoId, usuarioId])
+}
 
 model Projeto {
-  id Int @id @default(autoincrement())
+  id                Int    @id @default(autoincrement())
+  nome              String
+  area_conhecimento String
 
-  dono_id Int
-  dono    Usuario @relation(fields: [dono_id], references: [id])
+  membros UsuarioEmProjeto[]
 
-  titulo_prjt String
-  area        String @default("Desconhecida")
-  descr       String @default("Pendente")
-
-  tarefas Tarefa[]
+  @@map("projeto")
 }
+
+
 
 model Tarefa {
   id Int @id @default(autoincrement())
@@ -79,7 +88,6 @@ enum Status {
   Concluida
   Reaberta
 } 
-
 enum Role {
   USER
   ADMIN
