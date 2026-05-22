@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { projetoController } from "../controller/projetoController";
+import { roleMiddleware } from "../middleware/role";
+import { Role } from "../prisma/generated/enums";
 
 export const projetoRoutes = Router()
 
-
+projetoRoutes.use(roleMiddleware([Role.ADMIN]))
 
 projetoRoutes.get("/",async (req,res)=>{
 
@@ -31,7 +33,7 @@ projetoRoutes.delete("/:id",async (req,res)=>{
 
 projetoRoutes.put("/:id",async (req,res)=>{
 
-    return projetoController.buscar(req,res)
+    return projetoController.atualizar(req,res)
 
 })
 

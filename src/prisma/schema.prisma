@@ -29,19 +29,20 @@ model Usuario {
 
   @@map("usuario")
 }
+
 enum Role {
   USER
   ADMIN
 }
+
 enum TypeToken {
   ACCESS
   REFRESH
 }
 
-
 model Token {
   id        Int       @id @default(autoincrement())
-  token     String    @db.VarChar(255)
+  token     String    @db.Text
   type      TypeToken @default(ACCESS)
   revoked   Boolean   @default(false)
   expiresAt DateTime
@@ -51,7 +52,6 @@ model Token {
 
   @@map("token")
 }
-
 
 model Projeto {
   id                Int    @id @default(autoincrement())
@@ -64,22 +64,21 @@ model Projeto {
   @@map("projeto")
 }
 
-
 model UsuarioEmProjeto {
   projetoId Int
   usuarioId Int
-  projeto   Projeto @relation(fields: [projetoId], references: [id])
-  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  projeto   Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@id([projetoId, usuarioId])
+  @@map("usuario_em_projeto")
 }
-
 
 model Tarefa {
   id Int @id @default(autoincrement())
 
   projeto_id Int
-  projeto    Projeto @relation(fields: [projeto_id], references: [id])
+  projeto    Projeto @relation(fields: [projeto_id], references: [id], onDelete: Cascade)
 
   titulo_trf  String
   descr       String
@@ -92,19 +91,22 @@ model Tarefa {
   prioridade  Prioridade
   status      Status
   usuarios    UsuarioEmTarefa[]
+
+  @@map("tarefa")
 }
+
 enum Prioridade {
-  Baixa
-  Media
-  Alta
+  BAIXA
+  MEDIA
+  ALTA
 }
+
 enum Status {
   Pausada
   Andamento
   Concluida
   Reaberta
 }
-
 
 model UsuarioEmTarefa {
   tarefaId  Int
@@ -114,4 +116,5 @@ model UsuarioEmTarefa {
   usuario Usuario @relation(fields: [usuarioId], references: [id])
 
   @@id([tarefaId, usuarioId])
+  @@map("usuario_em_tarefa")
 }

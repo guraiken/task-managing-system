@@ -1,15 +1,16 @@
-import type { Projeto } from "../prisma/generated/client";
+import type { Projeto, Usuario } from "../prisma/generated/client";
 import { projetoServices, type ProjetoServices } from "../services/projetoServices";
 import type { Response, Request } from "express"
 
-
-
+// NECESSARIO MANDAR NO BODY O IDUSUARIO
+export interface ProjetoIdentifier extends Omit<Projeto, "id"> {
+    idUsuario: number
+}
 
 export class ProjetoController {
 
     constructor(private readonly service: ProjetoServices) {
         this.service
-
     }
 
     async buscar(req: Request, res: Response) {
@@ -53,12 +54,11 @@ export class ProjetoController {
 
     async criar(req: Request, res: Response) {
 
-        const dadosProjeto: Omit<Projeto,"id"> = req.body
-
-        const {id} = req.params
+        const dadosProjeto: ProjetoIdentifier = req.body
+        const {idUsuario, ...rest} =dadosProjeto
 
         try {
-            const criar = await this.service.criar(dadosProjeto,Number(id))
+            const criar = await this.service.criar(rest, Number(idUsuario))
 
 
             return res.status(201).json(criar)

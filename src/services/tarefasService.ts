@@ -12,7 +12,7 @@ type CriarTarefaDados = {
   titulo?: string
   descricao?: string
   data_f?: string
-  prioridade: "Baixa" | "Media" | "Alta"
+  prioridade: "BAIXA" | "MEDIA" | "ALTA"
   projetoId?: number
   donoId: number
   responsavelId: number
@@ -38,12 +38,14 @@ export async function criarTarefaService(dados: CriarTarefaDados) {
   const dataInicial = new Date()
   const diaFinal = new Date(dataFinal.getFullYear(), dataFinal.getMonth(), dataFinal.getDate())
   const diaInicial = new Date(dataInicial.getFullYear(), dataInicial.getMonth(), dataInicial.getDate())
+  console.log(diaInicial)
+  console.log(diaFinal)
 
   if (diaFinal < diaInicial) {
     throw new ErroValidacaoTarefa("Data final nao pode ser anterior a data inicial")
   }
 
-  const prioridadesValidas = ["Baixa", "Media", "Alta"]
+  const prioridadesValidas = ["BAIXA", "MEDIA", "ALTA"]
 
   if (!prioridadesValidas.includes(dados.prioridade)) {
     throw new ErroValidacaoTarefa("Prioridade invalida")

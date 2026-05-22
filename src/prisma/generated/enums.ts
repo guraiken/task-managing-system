@@ -26,9 +26,9 @@ export type TypeToken = (typeof TypeToken)[keyof typeof TypeToken]
 
 
 export const Prioridade = {
-  Baixa: 'Baixa',
-  Media: 'Media',
-  Alta: 'Alta'
+  BAIXA: 'BAIXA',
+  MEDIA: 'MEDIA',
+  ALTA: 'ALTA'
 } as const
 
 export type Prioridade = (typeof Prioridade)[keyof typeof Prioridade]

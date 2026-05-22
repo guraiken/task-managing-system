@@ -5,7 +5,7 @@ type CriarTarefaDados = {
   descricao?: string
   data_i: Date
   data_f: Date
-  prioridade: "Baixa" | "Media" | "Alta"
+  prioridade: "BAIXA" | "MEDIA" | "ALTA"
   projetoId: number
   donoId: number
   responsavelId: number
